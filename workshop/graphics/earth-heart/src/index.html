@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Earth Heart</title>
+
+    <!--
+        Main stylesheet.
+
+        CSS controls how things look.
+        HTML describes what things are.
+    -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!--
+    SVG is used because it draws shapes mathematically.
+
+    Unlike bitmap images, SVG graphics remain perfectly sharp
+    at any size.
+-->
+<svg
+    width="600"
+    height="600"
+    viewBox="0 0 600 600">
+    <!--
+    Orbit guide.
+
+    This circle shows the path the H will eventually follow.
+
+    It is only a visual guide for now.
+    -->
+    <circle
+    cx="300"
+    cy="300"
+    r="210"
+    class="orbit-path"/>
+    <!--
+        The Earth.
+
+        cx = center x
+        cy = center y
+        r  = radius
+    -->
+    <circle
+        cx="300"
+        cy="300"
+        r="140"
+        class="earth"/>
+
+    <!--
+        The letters inside the Earth.
+
+        The H will be added later.
+    -->
+    <text
+        x="300"
+        y="315"
+        class="earth-text">
+
+        EART
+
+    </text>
+    <!--
+    The letter H.
+
+    In later versions this letter will orbit the Earth.
+
+    For now it remains stationary so we can verify the
+    overall composition before introducing animation.
+    -->
+    <text
+    x="300"
+    y="145"
+    class="orbit-letter">
+
+    H
+
+</text>
+
+</svg>
+
+</body>
+</html>

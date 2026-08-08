@@ -1,0 +1,109 @@
+/*
+    Earth Heart
+
+    Version 1
+
+    The goal is only to draw
+    one Earth and the word EART.
+*/
+
+/*
+    Remove the browser's default spacing.
+*/
+body {
+
+    margin: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    height: 100vh;
+
+    background: #111;
+
+}
+
+/*
+    Make the SVG responsive.
+*/
+svg {
+
+    width: 90vmin;
+
+    height: 90vmin;
+
+}
+
+/*
+    Draw the Earth.
+*/
+.earth {
+
+    fill: #2f8f4e;
+
+    stroke: #6fd88c;
+
+    stroke-width: 4;
+
+}
+
+/*
+    Draw the text.
+*/
+.earth-text {
+
+    fill: white;
+
+    font-size: 56px;
+
+    font-family: Arial, sans-serif;
+
+    font-weight: bold;
+
+    text-anchor: middle;
+
+}
+
+/*
+    The orbiting H.
+
+    It does not move yet.
+
+    Motion will be added only after the
+    static composition has been verified.
+*/
+.orbit-letter {
+
+    fill: white;
+
+    font-size: 56px;
+
+    font-family: Arial, sans-serif;
+
+    font-weight: bold;
+
+    text-anchor: middle;
+
+}
+
+/*
+    The orbit path.
+
+    fill: none keeps the center transparent.
+
+    stroke-dasharray creates the dashed line.
+*/
+.orbit-path {
+
+    fill: none;
+
+    stroke: #666;
+
+    stroke-width: 2;
+
+    stroke-dasharray: 8 8;
+
+}
