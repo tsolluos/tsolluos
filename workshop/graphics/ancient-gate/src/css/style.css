@@ -208,3 +208,30 @@ background:
     }
 
 }
+
+/*
+    The feet sit near the bottom of the visitor's view.
+
+    Like the eyes, the SVG is centered horizontally using left: 50%
+    together with translateX(-50%).
+*/
+.feet {
+    position: absolute;
+
+    width: 300px;
+
+    left: 50%;
+    bottom: -20px;
+
+    transform: translateX(-50%);
+}
+
+/*
+    Green keeps the visible body deliberately generic and illustrative.
+
+    This is only the first static version of the feet.
+    Shape and position can be refined after seeing them in the browser.
+*/
+.foot {
+    fill: green;
+}
