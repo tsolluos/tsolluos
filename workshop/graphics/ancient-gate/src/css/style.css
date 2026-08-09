@@ -9,3 +9,46 @@ body {
     min-height: 100vh;
     background: black;
 }
+/*
+    The Ancient Gate stage fills the entire browser window.
+
+    position: relative gives future visual layers a shared reference
+    area without requiring them to know anything about the page itself.
+
+    overflow: hidden prevents oversized atmospheric effects from
+    creating scrollbars around the stage.
+*/
+.ancient-gate {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+/*
+    This is the first, deliberately simple version of the fog.
+
+    The fog is larger than the visible screen so its soft edges remain
+    outside the visitor's view.
+
+    A radial gradient gives us a hazy patch without needing an image,
+    JavaScript, or an animation library.
+*/
+.fog {
+    position: absolute;
+
+    width: 120%;
+    height: 120%;
+
+    top: -10%;
+    left: -10%;
+
+background:
+    radial-gradient(
+        ellipse at center,
+        rgba(255, 255, 255, 0.30) 0%,
+        rgba(255, 255, 255, 0.12) 35%,
+        rgba(255, 255, 255, 0) 70%
+    );
+}
