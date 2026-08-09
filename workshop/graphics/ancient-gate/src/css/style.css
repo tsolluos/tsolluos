@@ -115,3 +115,13 @@ background:
 .eye {
     fill: white;
 }
+
+/*
+    Each pupil shares the center point of its eye.
+
+    The dark fill creates the simplest possible eye detail while
+    preserving our small-step approach.
+*/
+.pupil {
+    fill: black;
+}
