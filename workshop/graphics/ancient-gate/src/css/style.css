@@ -87,3 +87,31 @@ background:
         transform: translate(6%, 2%);
     }
 }
+
+/*
+    The eyes sit above the atmospheric fog layer.
+
+    left/top place the SVG at the center of the stage, while transform
+    moves it back by half of its own size so it is truly centered.
+*/
+.eyes {
+    position: absolute;
+
+    width: 300px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+
+/*
+    For now an eye is simply a white ellipse.
+
+    Detail comes later. First we establish the simplest recognizable
+    version of two eyes emerging from darkness.
+*/
+.eye {
+    fill: white;
+}

@@ -32,6 +32,36 @@
     -->
     <div class="fog"></div>
 
+<!--
+    The eyes are drawn with SVG because they are visual shapes rather
+    than page structure.
+
+    This first version is intentionally static. Before teaching the
+    eyes to blink or look around, we prove that their basic shapes,
+    position, and scale work.
+-->
+<svg class="eyes" viewBox="0 0 300 120" aria-hidden="true">
+
+    <!-- Left eye -->
+    <ellipse
+        cx="90"
+        cy="60"
+        rx="55"
+        ry="30"
+        class="eye"
+    />
+
+    <!-- Right eye -->
+    <ellipse
+        cx="210"
+        cy="60"
+        rx="55"
+        ry="30"
+        class="eye"
+    />
+
+</svg>
+
 </main>
 
 </body>
