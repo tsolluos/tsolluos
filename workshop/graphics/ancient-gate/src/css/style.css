@@ -171,7 +171,7 @@ background:
 .pupil {
     transform-box: fill-box;
     transform-origin: center;
-    animation: pupil-look-left 4s ease-in-out infinite;
+    animation: pupil-look-around 6s ease-in-out infinite;
 }
 
 /*
@@ -180,17 +180,26 @@ background:
     translateX() moves each pupil horizontally without changing its
     original SVG coordinates.
 
-    A negative X value moves left.
+    Negative X values move left.
+    Positive X values move right.
 */
-@keyframes pupil-look-left {
+@keyframes pupil-look-around {
     0%,
-    25%,
+    20%,
+    50%,
+    80%,
     100% {
         transform: translateX(0);
     }
 
-    50%,
-    75% {
+    30%,
+    40% {
         transform: translateX(-18px);
     }
+
+    60%,
+    70% {
+        transform: translateX(18px);
+    }
+
 }
