@@ -235,3 +235,20 @@ background:
 .foot {
     fill: green;
 }
+/*
+    Each foot receives a small outward rotation.
+
+    The shared .foot class controls what both feet have in common.
+    The side-specific classes let each foot rotate independently.
+*/
+.foot-left {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: rotate(-12deg);
+}
+
+.foot-right {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: rotate(12deg);
+}
