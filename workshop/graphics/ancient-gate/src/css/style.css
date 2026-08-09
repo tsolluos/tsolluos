@@ -1,0 +1,11 @@
+/*
+    Ancient Gate begins in darkness.
+
+    The body fills the browser window so the opening stage has no
+    accidental white margins around it.
+*/
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: black;
+}
