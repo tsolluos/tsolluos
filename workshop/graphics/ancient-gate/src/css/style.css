@@ -58,3 +58,32 @@ background:
         rgba(255, 255, 255, 0) 70%
     );
 }
+
+/*
+    The fog drifts slowly across the stage.
+
+    transform moves the entire fog layer without changing the layout
+    of anything else on the page.
+
+    alternate makes the animation reverse direction at the end rather
+    than suddenly jumping back to its starting position.
+*/
+
+.fog {
+    animation: fog-drift 18s ease-in-out infinite alternate;
+}
+
+/*
+    A very small movement is enough.
+
+    Fog should feel atmospheric rather than draw attention to itself.
+*/
+@keyframes fog-drift {
+    from {
+        transform: translate(-6%, -2%);
+    }
+
+    to {
+        transform: translate(6%, 2%);
+    }
+}
