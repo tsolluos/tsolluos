@@ -160,3 +160,37 @@ background:
         transform: scaleY(0.05);
     }
 }
+
+/*
+    The pupils can move independently of the white eye shapes.
+
+    This first experiment moves them only horizontally.
+    The original SVG coordinates remain unchanged, giving each pupil
+    a known-good center position.
+*/
+.pupil {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pupil-look-left 4s ease-in-out infinite;
+}
+
+/*
+    Most of the cycle keeps the pupils centered.
+
+    translateX() moves each pupil horizontally without changing its
+    original SVG coordinates.
+
+    A negative X value moves left.
+*/
+@keyframes pupil-look-left {
+    0%,
+    25%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50%,
+    75% {
+        transform: translateX(-18px);
+    }
+}
