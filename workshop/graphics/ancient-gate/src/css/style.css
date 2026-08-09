@@ -125,3 +125,38 @@ background:
 .pupil {
     fill: black;
 }
+
+/*
+    The first eye behavior is a simple blink.
+
+    transform-origin keeps the closing motion centered on each eye
+    instead of making the eye collapse from one edge.
+
+    transform-box tells the browser to use each SVG shape's own
+    bounding box when calculating that center point.
+*/
+.eye {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: eye-blink 4s ease-in-out infinite;
+}
+
+
+/*
+    Most of the animation leaves the eye completely open.
+
+    For only a brief moment near the end of each cycle, scaleY reduces
+    the eye's vertical size until it is almost closed, then opens it
+    again.
+*/
+@keyframes eye-blink {
+    0%,
+    90%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    95% {
+        transform: scaleY(0.05);
+    }
+}
