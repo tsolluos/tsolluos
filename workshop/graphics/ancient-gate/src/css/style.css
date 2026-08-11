@@ -227,6 +227,36 @@ background:
 }
 
 /*
+    The feet begin hidden.
+
+    Their 6-second animation matches the pupil look-around cycle so
+    they become visible only when the eyes look downward.
+*/
+.feet {
+    opacity: 0;
+    animation: feet-discovery 6s ease-in-out infinite;
+}
+
+/*
+    The feet remain hidden through most of the sequence.
+
+    When the pupils look down at 85%-90%, the feet become visible.
+    They disappear again when the eyes return to center.
+*/
+@keyframes feet-discovery {
+    0%,
+    80%,
+    100% {
+        opacity: 0;
+    }
+
+    85%,
+    90% {
+        opacity: 1;
+    }
+}
+
+/*
     Green keeps the visible body deliberately generic and illustrative.
 
     This is only the first static version of the feet.
