@@ -3,10 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>tsolluos</title>
+
+    <!--
+        Ancient Gate styles live in their own file so this HTML remains
+        responsible for structure rather than appearance.
+    -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <h1>tsolluos</h1>
-    <p>The path begins here. The pipeline works, RUDI!</p>
+
+    <!--
+        Ancient Gate begins with an intentionally empty stage.
+
+        We will add visual elements one small, tested step at a time.
+        The first goal is simply to prove that this page loads correctly.
+    -->
+    <main class="ancient-gate">
+
+    <!--
+        The fog is its own visual layer.
+
+        Keeping it separate means we can later place other elements,
+        such as the eyes and gate, above or below it without changing
+        what those elements are responsible for.
+    -->
+    <div class="fog"></div>
+
+<!--
+    The eyes are drawn with SVG because they are visual shapes rather
+    than page structure.
+
+    This first version is intentionally static. Before teaching the
+    eyes to blink or look around, we prove that their basic shapes,
+    position, and scale work.
+-->
+<svg class="eyes" viewBox="0 0 300 120" aria-hidden="true">
+
+    <!-- Left eye -->
+    <ellipse
+        cx="90"
+        cy="60"
+        rx="55"
+        ry="30"
+        class="eye"
+    />
+
+    <!-- Left pupil -->
+    <circle
+        cx="90"
+        cy="60"
+        r="12"
+        class="pupil"
+    />
+
+    <!-- Right eye -->
+    <ellipse
+        cx="210"
+        cy="60"
+        rx="55"
+        ry="30"
+        class="eye"
+    />
+
+    <!-- Right pupil -->
+    <circle
+        cx="210"
+        cy="60"
+        r="12"
+        class="pupil"
+    />
+
+</svg>
+
+<!--
+    The feet are drawn separately from the eyes because they belong
+    to a different visual layer of the Ancient Gate experience.
+
+    This first version is intentionally static.
+    We establish their basic shape, size, and position before
+    teaching them when to appear.
+-->
+<svg
+    class="feet"
+    viewBox="0 0 300 140"
+    aria-hidden="true"
+>
+    <ellipse
+        cx="95"
+        cy="75"
+        rx="32"
+        ry="58"
+        class="foot foot-left"
+    />
+
+    <ellipse
+        cx="205"
+        cy="75"
+        rx="32"
+        ry="58"
+        class="foot foot-right"
+    />
+</svg>
+
+<!--
+    The hands are separate from the eyes and feet so they can later
+    be revealed independently as part of the discovery sequence.
+
+    This first version is intentionally static.
+    We establish their basic shape, size, and position before
+    teaching them when to appear.
+-->
+<svg
+    class="hands"
+    viewBox="0 0 500 180"
+    aria-hidden="true"
+>
+    <ellipse
+        cx="100"
+        cy="90"
+        rx="38"
+        ry="58"
+        class="hand hand-left"
+    />
+
+    <ellipse
+        cx="400"
+        cy="90"
+        rx="38"
+        ry="58"
+        class="hand hand-right"
+    />
+</svg>
+
+</main>
+
 </body>
 </html>

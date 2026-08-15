@@ -1,0 +1,383 @@
+/*
+    Ancient Gate begins in darkness.
+
+    The body fills the browser window so the opening stage has no
+    accidental white margins around it.
+*/
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: black;
+}
+/*
+    The Ancient Gate stage fills the entire browser window.
+
+    position: relative gives future visual layers a shared reference
+    area without requiring them to know anything about the page itself.
+
+    overflow: hidden prevents oversized atmospheric effects from
+    creating scrollbars around the stage.
+*/
+.ancient-gate {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+/*
+    This is the first, deliberately simple version of the fog.
+
+    The fog is larger than the visible screen so its soft edges remain
+    outside the visitor's view.
+
+    A radial gradient gives us a hazy patch without needing an image,
+    JavaScript, or an animation library.
+*/
+.fog {
+    position: absolute;
+
+    width: 120%;
+    height: 120%;
+
+    top: -10%;
+    left: -10%;
+
+background:
+    radial-gradient(
+        ellipse at 30% 45%,
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0.07) 30%,
+        rgba(255, 255, 255, 0) 65%
+    ),
+    radial-gradient(
+        ellipse at 70% 55%,
+        rgba(255, 255, 255, 0.16) 0%,
+        rgba(255, 255, 255, 0.06) 35%,
+        rgba(255, 255, 255, 0) 70%
+    );
+}
+
+/*
+    The fog drifts slowly across the stage.
+
+    transform moves the entire fog layer without changing the layout
+    of anything else on the page.
+
+    alternate makes the animation reverse direction at the end rather
+    than suddenly jumping back to its starting position.
+*/
+
+.fog {
+    animation: fog-drift 18s ease-in-out infinite alternate;
+}
+
+/*
+    A very small movement is enough.
+
+    Fog should feel atmospheric rather than draw attention to itself.
+*/
+@keyframes fog-drift {
+    from {
+        transform: translate(-6%, -2%);
+    }
+
+    to {
+        transform: translate(6%, 2%);
+    }
+}
+
+/*
+    The eyes sit above the atmospheric fog layer.
+
+    left/top place the SVG at the center of the stage, while transform
+    moves it back by half of its own size so it is truly centered.
+*/
+.eyes {
+    position: absolute;
+
+    width: 300px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+/*
+    The eyes remain visible while the visitor discovers the feet
+    and hands.
+
+    After the hands have appeared, the entire eye layer fades away.
+    This marks the transition from watching the eyes to seeing through
+    the visitor's own viewpoint.
+*/
+.eyes {
+    animation: eyes-fade-out 12s ease-in-out forwards;
+}
+
+
+/*
+    The eyes stay fully visible through most of the opening sequence.
+
+    After the hands have had time to appear and settle, the eye layer
+    fades to transparent and remains hidden for the rest of this run.
+*/
+@keyframes eyes-fade-out {
+    0%,
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/*
+    For now an eye is simply a white ellipse.
+
+    Detail comes later. First we establish the simplest recognizable
+    version of two eyes emerging from darkness.
+*/
+.eye {
+    fill: white;
+}
+
+/*
+    Each pupil shares the center point of its eye.
+
+    The dark fill creates the simplest possible eye detail while
+    preserving our small-step approach.
+*/
+.pupil {
+    fill: rgb(35, 35, 35);
+}
+
+/*
+    The first eye behavior is a simple blink.
+
+    transform-origin keeps the closing motion centered on each eye
+    instead of making the eye collapse from one edge.
+
+    transform-box tells the browser to use each SVG shape's own
+    bounding box when calculating that center point.
+*/
+.eye {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: eye-blink 4s ease-in-out infinite;
+}
+
+
+/*
+    Most of the animation leaves the eye completely open.
+
+    For only a brief moment near the end of each cycle, scaleY reduces
+    the eye's vertical size until it is almost closed, then opens it
+    again.
+*/
+@keyframes eye-blink {
+    0%,
+    90%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    95% {
+        transform: scaleY(0.05);
+    }
+}
+
+/*
+    The pupils can move independently of the white eye shapes.
+
+    This first experiment moves them only horizontally.
+    The original SVG coordinates remain unchanged, giving each pupil
+    a known-good center position.
+*/
+.pupil {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pupil-look-around 8s ease-in-out infinite;
+}
+
+/*
+    Most of the cycle keeps the pupils centered.
+
+    translateX() moves each pupil horizontally without changing its
+    original SVG coordinates.
+
+    Negative X values move left.
+    Positive X values move right.
+*/
+@keyframes pupil-look-around {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    30%,
+    40% {
+        transform: translate(-18px, 0);
+    }
+
+    60%,
+    70% {
+        transform: translate(18px, 0);
+    }
+
+    85%,
+    90% {
+        transform: translate(0, 14px);
+    }
+
+}
+
+/*
+    The feet sit near the bottom of the visitor's view.
+
+    Like the eyes, the SVG is centered horizontally using left: 50%
+    together with translateX(-50%).
+*/
+.feet {
+    position: absolute;
+
+    width: 300px;
+
+    left: 50%;
+    bottom: -20px;
+
+    transform: translateX(-50%);
+}
+
+/*
+    The feet begin hidden.
+
+    Their 8-second animation matches the pupil look-around cycle so
+    they become visible only when the eyes look downward.
+*/
+.feet {
+    opacity: 0;
+    animation: feet-discovery 8s ease-in-out forwards;
+}
+
+/*
+    The feet remain hidden through most of the sequence.
+
+    When the pupils look down at 85%-90%, the feet become visible.
+    They disappear again when the eyes return to center.
+*/
+@keyframes feet-discovery {
+    0%,
+    80% {
+        opacity: 0;
+    }
+
+    85%,
+    100% {
+        opacity: 1;
+    }
+}
+
+/*
+    Green keeps the visible body deliberately generic and illustrative.
+
+    This is only the first static version of the feet.
+    Shape and position can be refined after seeing them in the browser.
+*/
+.foot {
+    fill: green;
+}
+/*
+    Each foot receives a small outward rotation.
+
+    The shared .foot class controls what both feet have in common.
+    The side-specific classes let each foot rotate independently.
+*/
+.foot-left {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: rotate(-12deg);
+}
+
+.foot-right {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: rotate(12deg);
+}
+
+/*
+    The hands sit in the lower portion of the visitor's view.
+
+    The SVG spans a wider area than the feet so the hands appear
+    naturally separated on opposite sides of the viewpoint.
+*/
+.hands {
+    position: absolute;
+
+    width: 500px;
+
+    left: 50%;
+    bottom: 80px;
+
+    transform: translateX(-50%);
+}
+
+/*
+    Green keeps the hands consistent with the feet and preserves
+    the simple, generic visual language of the experience.
+*/
+.hand {
+    fill: green;
+}
+
+/*
+    A small outward rotation gives the two simple ellipses different
+    orientations and begins suggesting left and right hands.
+*/
+.hand-left {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: rotate(-20deg);
+}
+
+.hand-right {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: rotate(20deg);
+}
+
+/*
+    The hands begin hidden.
+
+    They will be revealed only after the eyes have looked down,
+    discovered the feet, and returned to the forward position.
+*/
+.hands {
+    opacity: 0;
+    animation: hands-discovery 10s ease-in-out forwards;
+}
+
+/*
+    The hands remain hidden while the eyes explore and discover
+    the feet.
+
+    Near the end of the sequence, after the eyes have returned
+    toward the forward view, the hands become visible and remain.
+*/
+@keyframes hands-discovery {
+    0%,
+    80% {
+        opacity: 0;
+    }
+
+    90%,
+    100% {
+        opacity: 1;
+    }
+}
