@@ -331,4 +331,24 @@ background:
 */
 .hands {
     opacity: 0;
+    animation: hands-discovery 10s ease-in-out forwards;
+}
+
+/*
+    The hands remain hidden while the eyes explore and discover
+    the feet.
+
+    Near the end of the sequence, after the eyes have returned
+    toward the forward view, the hands become visible and remain.
+*/
+@keyframes hands-discovery {
+    0%,
+    80% {
+        opacity: 0;
+    }
+
+    90%,
+    100% {
+        opacity: 1;
+    }
 }
