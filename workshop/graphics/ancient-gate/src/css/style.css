@@ -282,3 +282,44 @@ background:
     transform-origin: center;
     transform: rotate(12deg);
 }
+
+/*
+    The hands sit in the lower portion of the visitor's view.
+
+    The SVG spans a wider area than the feet so the hands appear
+    naturally separated on opposite sides of the viewpoint.
+*/
+.hands {
+    position: absolute;
+
+    width: 500px;
+
+    left: 50%;
+    bottom: 80px;
+
+    transform: translateX(-50%);
+}
+
+/*
+    Green keeps the hands consistent with the feet and preserves
+    the simple, generic visual language of the experience.
+*/
+.hand {
+    fill: green;
+}
+
+/*
+    A small outward rotation gives the two simple ellipses different
+    orientations and begins suggesting left and right hands.
+*/
+.hand-left {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: rotate(-20deg);
+}
+
+.hand-right {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: rotate(20deg);
+}
