@@ -270,7 +270,7 @@ background:
     The feet remain hidden through most of the sequence.
 
     When the pupils look down at 85%-90%, the feet become visible.
-    They disappear again when the eyes return to center.
+    They remain visible after discovery as the sequence continues.
 */
 @keyframes feet-discovery {
     0%,
