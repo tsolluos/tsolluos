@@ -105,6 +105,35 @@ background:
     transform: translate(-50%, -50%);
 }
 
+/*
+    The eyes remain visible while the visitor discovers the feet
+    and hands.
+
+    After the hands have appeared, the entire eye layer fades away.
+    This marks the transition from watching the eyes to seeing through
+    the visitor's own viewpoint.
+*/
+.eyes {
+    animation: eyes-fade-out 12s ease-in-out forwards;
+}
+
+
+/*
+    The eyes stay fully visible through most of the opening sequence.
+
+    After the hands have had time to appear and settle, the eye layer
+    fades to transparent and remains hidden for the rest of this run.
+*/
+@keyframes eyes-fade-out {
+    0%,
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
 
 /*
     For now an eye is simply a white ellipse.
