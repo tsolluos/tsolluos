@@ -89,6 +89,48 @@ background:
 }
 
 /*
+    The Gate begins as a distant, stationary silhouette.
+
+    Its open center allows the moving fog to remain visible through it.
+    Low contrast keeps the Gate inside the atmosphere rather than making
+    it resemble a dark sticker attached to the screen.
+*/
+.gate-silhouette {
+    position: absolute;
+
+    width: 120px;
+    height: 190px;
+
+    left: 50%;
+    top: 18%;
+
+    transform: translateX(-50%);
+
+    border: 16px solid rgba(12, 12, 12, 0.88);
+    border-bottom: 0;
+    border-radius: 76px 76px 0 0;
+    opacity: 0;
+    animation: gate-emergence 12s ease-in-out 1s forwards;
+}
+
+/*
+    The Gate remains hidden while the eyes perform the discovery sequence.
+
+    As the eyes fade away and the visitor inherits the viewpoint,
+    the Gate emerges from the fog and remains visible.
+*/
+@keyframes gate-emergence {
+    0%,
+    90% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/*
     The eyes sit above the atmospheric fog layer.
 
     left/top place the SVG at the center of the stage, while transform
