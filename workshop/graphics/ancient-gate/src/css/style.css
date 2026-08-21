@@ -287,8 +287,8 @@ background:
 /*
     Green keeps the visible body deliberately generic and illustrative.
 
-    This is only the first static version of the feet.
-    Shape and position can be refined after seeing them in the browser.
+    The shared fill is inherited by every sole and toe inside
+    each grouped foot.
 */
 .foot {
     fill: green;
@@ -337,8 +337,8 @@ background:
 }
 
 /*
-    A small outward rotation gives the two simple ellipses different
-    orientations and begins suggesting left and right hands.
+    A small outward rotation gives the complete grouped hands
+    distinct left and right orientations.
 */
 .hand-left {
     transform-box: fill-box;
