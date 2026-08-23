@@ -142,6 +142,30 @@ background:
 }
 
 /*
+    The first inscription is deliberately restrained.
+
+    It appears over the doors but remains its own layer, allowing later
+    Gate designs to reposition it without changing either door panel.
+*/
+.gate-inscription {
+    position: absolute;
+
+    left: calc(50% + 3px);
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    color: rgba(150, 150, 150, 0.68);
+
+    font-family: Georgia, serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+/*
     The Gate remains hidden while the eyes perform the discovery sequence.
 
     As the eyes fade away and the visitor inherits the viewpoint,
