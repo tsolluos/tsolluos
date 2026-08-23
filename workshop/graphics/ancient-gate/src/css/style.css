@@ -98,7 +98,7 @@ background:
 .gate-silhouette {
     position: absolute;
 
-    width: 120px;
+    width: 160px;
     height: 190px;
 
     left: 50%;
@@ -108,9 +108,37 @@ background:
 
     border: 16px solid rgba(12, 12, 12, 0.88);
     border-bottom: 0;
-    border-radius: 76px 76px 0 0;
+    border-radius: 96px 96px 0 0;
     opacity: 0;
     animation: gate-emergence 12s ease-in-out 1s forwards;
+    overflow: hidden;
+}
+
+/*
+    The first doors are two equal dark panels.
+
+    Their slight contrast makes them readable inside the black frame,
+    while the center borders create the simplest possible door seam.
+*/
+.gate-door {
+    position: absolute;
+
+    width: 50%;
+    height: 100%;
+
+    top: 0;
+
+    background: rgba(28, 28, 28, 0.82);
+}
+
+.gate-door-left {
+    left: 0;
+    border-right: 1px solid rgba(80, 80, 80, 0.45);
+}
+
+.gate-door-right {
+    right: 0;
+    border-left: 1px solid rgba(80, 80, 80, 0.45);
 }
 
 /*
