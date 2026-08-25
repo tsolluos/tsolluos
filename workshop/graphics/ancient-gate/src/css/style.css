@@ -111,7 +111,8 @@ background:
     border-radius: 96px 96px 0 0;
     opacity: 0;
     animation: gate-emergence 12s ease-in-out 1s forwards;
-    overflow: hidden;
+    overflow: visible;
+    perspective: 600px;
 }
 
 /*
@@ -135,6 +136,7 @@ background:
 
     opacity: 0;
     animation: gate-interior-glimmer 3s ease-in-out 15s forwards;
+    border-radius: 80px 80px 0 0;
 }
 
 @keyframes gate-interior-glimmer {
@@ -162,43 +164,48 @@ background:
     top: 0;
 
     background: rgba(28, 28, 28, 0.82);
+    transform-style: preserve-3d;
 }
 
 .gate-door-left {
     left: 0;
     border-right: 1px solid rgba(80, 80, 80, 0.45);
-    animation: left-door-opening 3s ease-in-out 15s forwards;
+    transform-origin: left center;
+    animation: left-door-opening 5s ease-in-out 15s forwards;
+    border-radius: 80px 0 0 0;
 }
 
 .gate-door-right {
     right: 0;
     border-left: 1px solid rgba(80, 80, 80, 0.45);
-    animation: right-door-opening 3s ease-in-out 15s forwards;
+    transform-origin: right center;
+    animation: right-door-opening 5s ease-in-out 15s forwards;
+    border-radius: 0 80px 0 0;
 }
 
 /*
-    The first opening experiment moves each door only slightly.
+    Each door swings outward around its outside edge.
 
-    Opposite horizontal translations create a narrow central opening
-    while preserving the doors inside the Gate.
+    Opposite rotateY() values create the hinged movement, while stopping
+    short of 180 degrees keeps the opened reverse faces visually readable.
 */
 @keyframes left-door-opening {
     from {
-        transform: translateX(0);
+        transform: rotateY(0);
     }
 
     to {
-        transform: translateX(-10px);
+        transform: rotateY(-165deg);
     }
 }
 
 @keyframes right-door-opening {
     from {
-        transform: translateX(0);
+        transform: rotateY(0);
     }
 
     to {
-        transform: translateX(10px);
+        transform: rotateY(165deg);
     }
 }
 
@@ -208,12 +215,10 @@ background:
     Both halves share typography and vertical alignment, while their
     side-specific rules position them against the center seam.
 */
-.gate-inscription {
+.door-inscription {
     position: absolute;
 
     top: 50%;
-
-    transform: translateY(-50%);
 
     color: rgba(150, 150, 150, 0.68);
 
@@ -225,12 +230,50 @@ background:
     white-space: nowrap;
 }
 
+/*
+    The front inscription faces the visitor while the doors are closed.
+*/
+.gate-inscription {
+    transform: translateY(-50%) translateZ(1px);
+    backface-visibility: hidden;
+}
+
 .gate-inscription-left {
     right: -2px;
 }
 
 .gate-inscription-right {
     left: 0;
+}
+
+/*
+    The reverse inscription begins facing away from the visitor.
+
+    rotateY(180deg) makes it readable rather than mirrored when the
+    outward-swinging doors expose their originally inward-facing sides.
+*/
+.gate-reverse-inscription {
+    transform:
+        translateY(-50%)
+        rotateY(180deg)
+        translateZ(1px);
+
+    backface-visibility: hidden;
+}
+
+/*
+    After the doors open, these optical offsets position lost and soul
+    near the outward seams of their respective door panels.
+
+    The slightly different values compensate for the words' unequal
+    shapes and widths in the proportional Georgia font.
+*/
+.gate-reverse-inscription-left {
+    left: 45px;
+}
+
+.gate-reverse-inscription-right {
+    right: 43px;
 }
 
 /*
