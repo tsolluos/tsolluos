@@ -115,6 +115,39 @@ background:
 }
 
 /*
+    A restrained glimmer suggests that something exists beyond the Gate.
+
+    It remains hidden until the doors begin moving, then becomes visible
+    primarily through the narrow opening between them.
+*/
+.gate-interior {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(210, 220, 205, 0.45) 0%,
+            rgba(125, 140, 125, 0.18) 45%,
+            rgba(0, 0, 0, 0) 80%
+        );
+
+    opacity: 0;
+    animation: gate-interior-glimmer 3s ease-in-out 15s forwards;
+}
+
+@keyframes gate-interior-glimmer {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/*
     The first doors are two equal dark panels.
 
     Their slight contrast makes them readable inside the black frame,
