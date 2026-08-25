@@ -142,18 +142,17 @@ background:
 }
 
 /*
-    The first inscription is deliberately restrained.
+    Each inscription half belongs to one door.
 
-    It appears over the doors but remains its own layer, allowing later
-    Gate designs to reposition it without changing either door panel.
+    Both halves share typography and vertical alignment, while their
+    side-specific rules position them against the center seam.
 */
 .gate-inscription {
     position: absolute;
 
-    left: calc(50% + 3px);
     top: 50%;
 
-    transform: translate(-50%, -50%);
+    transform: translateY(-50%);
 
     color: rgba(150, 150, 150, 0.68);
 
@@ -163,6 +162,14 @@ background:
     line-height: 1;
 
     white-space: nowrap;
+}
+
+.gate-inscription-left {
+    right: -2px;
+}
+
+.gate-inscription-right {
+    left: 0;
 }
 
 /*
