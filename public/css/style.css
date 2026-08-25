@@ -89,6 +89,211 @@ background:
 }
 
 /*
+    The Gate begins as a distant, stationary silhouette.
+
+    Its open center allows the moving fog to remain visible through it.
+    Low contrast keeps the Gate inside the atmosphere rather than making
+    it resemble a dark sticker attached to the screen.
+*/
+.gate-silhouette {
+    position: absolute;
+
+    width: 160px;
+    height: 190px;
+
+    left: 50%;
+    top: 18%;
+
+    transform: translateX(-50%);
+
+    border: 16px solid rgba(12, 12, 12, 0.88);
+    border-bottom: 0;
+    border-radius: 96px 96px 0 0;
+    opacity: 0;
+    animation: gate-emergence 12s ease-in-out 1s forwards;
+    overflow: visible;
+    perspective: 600px;
+}
+
+/*
+    A restrained glimmer suggests that something exists beyond the Gate.
+
+    It remains hidden until the doors begin moving, then becomes visible
+    primarily through the narrow opening between them.
+*/
+.gate-interior {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(210, 220, 205, 0.45) 0%,
+            rgba(125, 140, 125, 0.18) 45%,
+            rgba(0, 0, 0, 0) 80%
+        );
+
+    opacity: 0;
+    animation: gate-interior-glimmer 3s ease-in-out 15s forwards;
+    border-radius: 80px 80px 0 0;
+}
+
+@keyframes gate-interior-glimmer {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/*
+    The first doors are two equal dark panels.
+
+    Their slight contrast makes them readable inside the black frame,
+    while the center borders create the simplest possible door seam.
+*/
+.gate-door {
+    position: absolute;
+
+    width: 50%;
+    height: 100%;
+
+    top: 0;
+
+    background: rgba(28, 28, 28, 0.82);
+    transform-style: preserve-3d;
+}
+
+.gate-door-left {
+    left: 0;
+    border-right: 1px solid rgba(80, 80, 80, 0.45);
+    transform-origin: left center;
+    animation: left-door-opening 5s ease-in-out 15s forwards;
+    border-radius: 80px 0 0 0;
+}
+
+.gate-door-right {
+    right: 0;
+    border-left: 1px solid rgba(80, 80, 80, 0.45);
+    transform-origin: right center;
+    animation: right-door-opening 5s ease-in-out 15s forwards;
+    border-radius: 0 80px 0 0;
+}
+
+/*
+    Each door swings outward around its outside edge.
+
+    Opposite rotateY() values create the hinged movement, while stopping
+    short of 180 degrees keeps the opened reverse faces visually readable.
+*/
+@keyframes left-door-opening {
+    from {
+        transform: rotateY(0);
+    }
+
+    to {
+        transform: rotateY(-165deg);
+    }
+}
+
+@keyframes right-door-opening {
+    from {
+        transform: rotateY(0);
+    }
+
+    to {
+        transform: rotateY(165deg);
+    }
+}
+
+/*
+    Each inscription half belongs to one door.
+
+    Both halves share typography and vertical alignment, while their
+    side-specific rules position them against the center seam.
+*/
+.door-inscription {
+    position: absolute;
+
+    top: 50%;
+
+    color: rgba(150, 150, 150, 0.68);
+
+    font-family: Georgia, serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+/*
+    The front inscription faces the visitor while the doors are closed.
+*/
+.gate-inscription {
+    transform: translateY(-50%) translateZ(1px);
+    backface-visibility: hidden;
+}
+
+.gate-inscription-left {
+    right: -2px;
+}
+
+.gate-inscription-right {
+    left: 0;
+}
+
+/*
+    The reverse inscription begins facing away from the visitor.
+
+    rotateY(180deg) makes it readable rather than mirrored when the
+    outward-swinging doors expose their originally inward-facing sides.
+*/
+.gate-reverse-inscription {
+    transform:
+        translateY(-50%)
+        rotateY(180deg)
+        translateZ(1px);
+
+    backface-visibility: hidden;
+}
+
+/*
+    After the doors open, these optical offsets position lost and soul
+    near the outward seams of their respective door panels.
+
+    The slightly different values compensate for the words' unequal
+    shapes and widths in the proportional Georgia font.
+*/
+.gate-reverse-inscription-left {
+    left: 45px;
+}
+
+.gate-reverse-inscription-right {
+    right: 43px;
+}
+
+/*
+    The Gate remains hidden while the eyes perform the discovery sequence.
+
+    As the eyes fade away and the visitor inherits the viewpoint,
+    the Gate emerges from the fog and remains visible.
+*/
+@keyframes gate-emergence {
+    0%,
+    90% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/*
     The eyes sit above the atmospheric fog layer.
 
     left/top place the SVG at the center of the stage, while transform
@@ -287,8 +492,8 @@ background:
 /*
     Green keeps the visible body deliberately generic and illustrative.
 
-    This is only the first static version of the feet.
-    Shape and position can be refined after seeing them in the browser.
+    The shared fill is inherited by every sole and toe inside
+    each grouped foot.
 */
 .foot {
     fill: green;
@@ -337,8 +542,8 @@ background:
 }
 
 /*
-    A small outward rotation gives the two simple ellipses different
-    orientations and begins suggesting left and right hands.
+    A small outward rotation gives the complete grouped hands
+    distinct left and right orientations.
 */
 .hand-left {
     transform-box: fill-box;

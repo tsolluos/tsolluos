@@ -32,6 +32,45 @@
     -->
     <div class="fog"></div>
 
+    <!--
+        The first Gate is deliberately only a distant silhouette.
+
+        It appears after the fog but before the body layers, placing
+        the visitor's eyes, hands, and feet naturally in front of it.
+    -->
+    <div class="gate-silhouette" aria-hidden="true">
+        <!--
+            The Gate contains an interior layer behind two closed doors.
+
+            Their basic visual relationship is established before the
+            opening grows or the world beyond receives further detail.
+        -->
+
+        <!--
+            The interior is a separate layer behind both doors.
+
+            It remains hidden until the doors begin to part, allowing
+            the opening to reveal light without defining what lies beyond.
+        -->
+        <div class="gate-interior"></div>
+
+        <!--
+            Each door owns both a front and reverse inscription.
+
+            The front halves form tsolluos across the closed-door seam.
+            After the outward swing, the reverse faces reveal lost soul.
+        -->
+        <div class="gate-door gate-door-left">
+            <span class="door-inscription gate-inscription gate-inscription-left">tsol</span>
+            <span class="door-inscription gate-reverse-inscription gate-reverse-inscription-left">lost</span>
+        </div>
+
+        <div class="gate-door gate-door-right">
+            <span class="door-inscription gate-inscription gate-inscription-right">luos</span>
+            <span class="door-inscription gate-reverse-inscription gate-reverse-inscription-right">soul</span>
+        </div>
+    </div>
+
 <!--
     The eyes are drawn with SVG because they are visual shapes rather
     than page structure.
@@ -79,63 +118,128 @@
 </svg>
 
 <!--
-    The feet are drawn separately from the eyes because they belong
-    to a different visual layer of the Ancient Gate experience.
+    The feet occupy a separate visual layer because they are discovered
+    independently during the Ancient Gate opening sequence.
 
-    This first version is intentionally static.
-    We establish their basic shape, size, and position before
-    teaching them when to appear.
+    Each foot groups a simple sole with five overlapping toe shapes.
+    The result is recognizable rather than anatomically realistic.
 -->
 <svg
     class="feet"
     viewBox="0 0 300 140"
     aria-hidden="true"
 >
-    <ellipse
-        cx="95"
-        cy="75"
-        rx="32"
-        ry="58"
-        class="foot foot-left"
-    />
+    <!--
+        The group keeps the sole and toes together as one foot.
+        Rotating the group therefore rotates every included shape.
+    -->
+    <g class="foot foot-left">
+        <ellipse
+            cx="95"
+            cy="75"
+            rx="32"
+            ry="58"
+        />
 
-    <ellipse
-        cx="205"
-        cy="75"
-        rx="32"
-        ry="58"
-        class="foot foot-right"
-    />
+        <!-- Five overlapping circles suggest toes without realism. -->
+        <circle cx="73" cy="22" r="6" />
+        <circle cx="83" cy="17" r="7" />
+        <circle cx="94" cy="14" r="8" />
+        <circle cx="106" cy="15" r="9" />
+        <circle cx="118" cy="20" r="10" />
+    </g>
+
+    <!--
+        The right foot mirrors the left foot.
+        Its largest inner toe faces toward the center of the body.
+    -->
+    <g class="foot foot-right">
+        <ellipse
+            cx="205"
+            cy="75"
+            rx="32"
+            ry="58"
+        />
+
+        <!-- Five overlapping circles suggest toes without realism. -->
+        <circle cx="182" cy="20" r="10" />
+        <circle cx="194" cy="15" r="9" />
+        <circle cx="206" cy="14" r="8" />
+        <circle cx="217" cy="17" r="7" />
+        <circle cx="227" cy="22" r="6" />
+    </g>
 </svg>
 
 <!--
-    The hands are separate from the eyes and feet so they can later
-    be revealed independently as part of the discovery sequence.
+    The hands occupy a separate visual layer so their discovery can occur
+    independently after the eyes have found the feet.
 
-    This first version is intentionally static.
-    We establish their basic shape, size, and position before
-    teaching them when to appear.
+    Each hand groups a palm, four fingers, and an inward-facing thumb.
+    The shapes remain deliberately simple while establishing viewpoint.
 -->
 <svg
     class="hands"
     viewBox="0 0 500 180"
     aria-hidden="true"
 >
-    <ellipse
-        cx="100"
-        cy="90"
-        rx="38"
-        ry="58"
-        class="hand hand-left"
-    />
+    <!--
+        The group keeps the palm, four fingers, and thumb together.
+        The existing hand rotation is applied to the complete group.
+    -->
+    <g class="hand hand-left">
+        <!-- Palm -->
+        <ellipse
+            cx="100"
+            cy="90"
+            rx="38"
+            ry="58"
+        />
 
-    <ellipse
-        cx="400"
-        cy="90"
-        rx="38"
-        ry="58"
-        class="hand hand-right"
-    />
+        <!-- Four rounded rectangles suggest raised fingers. -->
+        <rect x="66" y="18" width="15" height="40" rx="7" />
+        <rect x="83" y="7" width="15" height="48" rx="7" />
+        <rect x="100" y="2" width="15" height="52" rx="7" />
+        <rect x="117" y="12" width="15" height="44" rx="7" />
+
+        <!-- The thumb faces inward toward the center of the body. -->
+        <ellipse
+            cx="140"
+            cy="88"
+            rx="11"
+            ry="25"
+            transform="rotate(-55 140 88)"
+        />
+    </g>
+
+    <!--
+        The right hand mirrors the left hand.
+        Its thumb faces inward toward the center of the body.
+    -->
+    <g class="hand hand-right">
+        <!-- Palm -->
+        <ellipse
+            cx="400"
+            cy="90"
+            rx="38"
+            ry="58"
+        />
+
+        <!-- Four rounded rectangles suggest raised fingers. -->
+        <rect x="368" y="12" width="15" height="44" rx="7" />
+        <rect x="385" y="2" width="15" height="52" rx="7" />
+        <rect x="402" y="7" width="15" height="48" rx="7" />
+        <rect x="419" y="18" width="15" height="40" rx="7" />
+
+        <!-- The thumb faces inward toward the center of the body. -->
+        <ellipse
+            cx="360"
+            cy="88"
+            rx="11"
+            ry="25"
+            transform="rotate(55 360 88)"
+        />
+    </g>
+
 </svg>
 
 </main>
