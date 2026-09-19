@@ -463,32 +463,42 @@ background:
 /*
     The feet begin hidden.
 
-    Their 8-second animation matches the pupil look-around cycle so
-    they become visible only when the eyes look downward.
+    Their 25-second journey preserves the original discovery timing,
+    then keeps them visible until they travel through the open Gate.
 */
 .feet {
     opacity: 0;
-    animation: feet-discovery 8s ease-in-out forwards;
+    animation: feet-journey 25s ease-in-out forwards;
 }
 
 /*
-    The feet remain hidden through most of the sequence.
+    The feet appear while the pupils look downward and remain in the
+    foreground while the Gate emerges and opens.
 
-    When the pupils look down at 85%-90%, the feet become visible.
-    They remain visible after discovery as the sequence continues.
+    Near the end, they recede upward, shrink with distance, and fade
+    after entering the Gate.
 */
-@keyframes feet-discovery {
+@keyframes feet-journey {
     0%,
-    80% {
+    25.6% {
         opacity: 0;
+        transform: translateX(-50%);
     }
 
-    85%,
-    100% {
+    27.2%,
+    84% {
         opacity: 1;
+        transform: translateX(-50%);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translateX(-50%)
+            translateY(-58vh)
+            scale(0.18);
     }
 }
-
 /*
     Green keeps the visible body deliberately generic and illustrative.
 
@@ -560,29 +570,38 @@ background:
 /*
     The hands begin hidden.
 
-    They will be revealed only after the eyes have looked down,
-    discovered the feet, and returned to the forward position.
+    Their 25-second journey preserves the original discovery timing,
+    then keeps them visible until they follow the feet through the Gate.
 */
 .hands {
     opacity: 0;
-    animation: hands-discovery 10s ease-in-out forwards;
+    animation: hands-journey 25s ease-in-out forwards;
 }
 
 /*
-    The hands remain hidden while the eyes explore and discover
-    the feet.
+    The hands appear after the eyes discover the feet and return forward.
 
-    Near the end of the sequence, after the eyes have returned
-    toward the forward view, the hands become visible and remain.
+    Near the end, they follow the feet upward, shrink with distance,
+    and fade after entering the Gate.
 */
-@keyframes hands-discovery {
+@keyframes hands-journey {
     0%,
-    80% {
+    32% {
         opacity: 0;
+        transform: translateX(-50%);
     }
 
-    90%,
-    100% {
+    36%,
+    84% {
         opacity: 1;
+        transform: translateX(-50%);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translateX(-50%)
+            translateY(-48vh)
+            scale(0.18);
     }
 }
