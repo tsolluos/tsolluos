@@ -121,7 +121,7 @@
     The feet occupy a separate visual layer because they are discovered
     independently during the Ancient Gate opening sequence.
 
-    Each foot groups a simple sole with five overlapping toe shapes.
+    Each foot groups a curved sole with five individually sized toe shapes.
     The result is recognizable rather than anatomically realistic.
 -->
 <svg
@@ -134,19 +134,29 @@
         Rotating the group therefore rotates every included shape.
     -->
     <g class="foot foot-left">
-        <ellipse
-            cx="95"
-            cy="75"
-            rx="32"
-            ry="58"
+        <!--
+            The sole widens beneath the toes and narrows toward the heel.
+            Curved path segments create an organic outline without realism.
+        -->
+        <path
+            d="
+                M 76 130
+                C 68 119, 66 101, 68 82
+                C 70 62, 73 45, 80 32
+                C 87 22, 101 21, 111 29
+                C 121 38, 124 54, 122 71
+                C 120 89, 116 105, 111 120
+                C 106 134, 86 140, 76 130
+                Z
+            "
         />
 
-        <!-- Five overlapping circles suggest toes without realism. -->
-        <circle cx="73" cy="22" r="6" />
-        <circle cx="83" cy="17" r="7" />
-        <circle cx="94" cy="14" r="8" />
-        <circle cx="106" cy="15" r="9" />
-        <circle cx="118" cy="20" r="10" />
+        <!-- Five individually positioned circles suggest separated toes. -->
+        <circle cx="77" cy="33" r="4" />
+        <circle cx="83" cy="24" r="5" />
+        <circle cx="94" cy="21" r="5" />
+        <circle cx="106" cy="22" r="6" />
+        <circle cx="118" cy="31" r="8" />
     </g>
 
     <!--
@@ -154,19 +164,29 @@
         Its largest inner toe faces toward the center of the body.
     -->
     <g class="foot foot-right">
-        <ellipse
-            cx="205"
-            cy="75"
-            rx="32"
-            ry="58"
+        <!--
+            This path mirrors the refined left sole around the SVG center.
+            Its forefoot widens beneath the toes and narrows at the heel.
+        -->
+        <path
+            d="
+                M 224 130
+                C 232 119, 234 101, 232 82
+                C 230 62, 227 45, 220 32
+                C 213 22, 199 21, 189 29
+                C 179 38, 176 54, 178 71
+                C 180 89, 184 105, 189 120
+                C 194 134, 214 140, 224 130
+                Z
+            "
         />
 
-        <!-- Five overlapping circles suggest toes without realism. -->
-        <circle cx="182" cy="20" r="10" />
-        <circle cx="194" cy="15" r="9" />
-        <circle cx="206" cy="14" r="8" />
-        <circle cx="217" cy="17" r="7" />
-        <circle cx="227" cy="22" r="6" />
+        <!-- Five individually positioned circles suggest separated toes. -->
+        <circle cx="182" cy="32" r="8" />
+        <circle cx="194" cy="22" r="6" />
+        <circle cx="206" cy="21" r="5" />
+        <circle cx="217" cy="24" r="5" />
+        <circle cx="223" cy="33" r="4" />
     </g>
 </svg>
 
