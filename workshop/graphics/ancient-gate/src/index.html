@@ -207,27 +207,44 @@
         The existing hand rotation is applied to the complete group.
     -->
     <g class="hand hand-left">
-        <!-- Palm -->
-        <ellipse
-            cx="100"
-            cy="90"
-            rx="38"
-            ry="58"
+        <!--
+            The smaller palm still supports the fingers and thumb while
+            preserving a narrow wrist at the bottom.
+        -->
+        <path
+            d="
+                M 86 143
+                C 76 135, 72 119, 71 101
+                C 70 83, 72 67, 79 57
+                C 87 49, 113 49, 122 57
+                C 130 67, 133 83, 132 101
+                C 131 119, 126 135, 114 143
+                C 106 149, 94 149, 86 143
+                Z
+            "
         />
 
         <!-- Four rounded rectangles suggest raised fingers. -->
-        <rect x="66" y="18" width="15" height="40" rx="7" />
-        <rect x="83" y="7" width="15" height="48" rx="7" />
-        <rect x="100" y="2" width="15" height="52" rx="7" />
-        <rect x="117" y="12" width="15" height="44" rx="7" />
+        <rect x="73" y="25" width="11" height="55" rx="7" />
+        <rect x="86" y="13" width="11" height="48" rx="7" />
+        <rect x="99" y="8" width="11" height="52" rx="7" />
+        <rect x="112" y="19" width="11" height="50" rx="7" />
 
-        <!-- The thumb faces inward toward the center of the body. -->
-        <ellipse
-            cx="140"
-            cy="88"
-            rx="11"
-            ry="25"
-            transform="rotate(-55 140 88)"
+        <!--
+            The thumb grows from the palm's inner edge and tapers outward.
+            A curved path gives it an attached base and rounded tip.
+        -->
+        <path
+            d="
+                M 125 78
+                C 131 70, 139 63, 146 62
+                C 152 61, 156 66, 153 72
+                C 150 79, 143 86, 137 92
+                C 132 97, 126 93, 124 88
+                C 123 84, 123 81, 125 78
+                Z
+            "
+            transform="translate(-3 0)"
         />
     </g>
 
@@ -236,27 +253,44 @@
         Its thumb faces inward toward the center of the body.
     -->
     <g class="hand hand-right">
-        <!-- Palm -->
-        <ellipse
-            cx="400"
-            cy="90"
-            rx="38"
-            ry="58"
+        <!--
+            The right palm mirrors the refined left palm around
+            the horizontal center of the hands SVG.
+        -->
+        <path
+            d="
+                M 414 143
+                C 424 135, 428 119, 429 101
+                C 430 83, 428 67, 421 57
+                C 413 49, 387 49, 378 57
+                C 370 67, 367 83, 368 101
+                C 369 119, 374 135, 386 143
+                C 394 149, 406 149, 414 143
+                Z
+            "
         />
 
         <!-- Four rounded rectangles suggest raised fingers. -->
-        <rect x="368" y="12" width="15" height="44" rx="7" />
-        <rect x="385" y="2" width="15" height="52" rx="7" />
-        <rect x="402" y="7" width="15" height="48" rx="7" />
-        <rect x="419" y="18" width="15" height="40" rx="7" />
+        <rect x="377" y="19" width="11" height="50" rx="7" />
+        <rect x="390" y="8" width="11" height="52" rx="7" />
+        <rect x="403" y="13" width="11" height="48" rx="7" />
+        <rect x="416" y="25" width="11" height="55" rx="7" />
 
-        <!-- The thumb faces inward toward the center of the body. -->
-        <ellipse
-            cx="360"
-            cy="88"
-            rx="11"
-            ry="25"
-            transform="rotate(55 360 88)"
+        <!--
+            The mirrored thumb grows from the palm's inner edge
+            and tapers outward toward the body center.
+        -->
+        <path
+            d="
+                M 375 78
+                C 369 70, 361 63, 354 62
+                C 348 61, 344 66, 347 72
+                C 350 79, 357 86, 363 92
+                C 368 97, 374 93, 376 88
+                C 377 84, 377 81, 375 78
+                Z
+            "
+            transform="translate(3 0)"
         />
     </g>
 
