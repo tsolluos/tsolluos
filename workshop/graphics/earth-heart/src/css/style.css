@@ -51,6 +51,32 @@ svg {
 }
 
 /*
+    The photographic Earth turns slowly beneath the stationary text.
+
+    transform-box limits the rotation calculation to the image itself,
+    while transform-origin keeps the motion centered on the planet.
+*/
+.earth-image {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: earth-rotation 60s linear infinite;
+}
+
+/*
+    One slow revolution supplies continuous planetary motion without
+    competing with the faster journey of the orbiting H.
+*/
+@keyframes earth-rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/*
     Draw the text.
 */
 .earth-text {
