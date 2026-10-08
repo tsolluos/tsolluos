@@ -29,6 +29,19 @@
     viewBox="0 0 600 600">
 
 <!--
+    The clipping circle hides the square corners of the Earth image.
+-->
+<defs>
+    <clipPath id="earth-clip">
+        <circle
+            cx="300"
+            cy="300"
+            r="140"
+        />
+    </clipPath>
+</defs>
+
+<!--
     One shared path serves as both the visible orbit guide
     and the exact route followed by the H.
 -->
@@ -42,6 +55,24 @@
         A 100 210 0 0 1 200 300
         A 100 210 0 0 1 300 90
     "
+/>
+
+<!--
+    NASA's Blue Marble image fills the existing Earth dimensions.
+
+    The clip path keeps the square JPEG inside a circular boundary.
+
+    Source: NASA PIA18033, Suomi NPP / VIIRS.
+    https://images.nasa.gov/details/PIA18033
+-->
+<image
+    href="images/earth-blue-marble.jpg"
+    x="160"
+    y="160"
+    width="280"
+    height="280"
+    preserveAspectRatio="xMidYMid slice"
+    clip-path="url(#earth-clip)"
 />
 
     <!--
