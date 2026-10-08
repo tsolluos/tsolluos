@@ -27,18 +27,23 @@
     width="600"
     height="600"
     viewBox="0 0 600 600">
-    <!--
-    Orbit guide.
 
-    This circle shows the path the H will eventually follow.
+<!--
+    One shared path serves as both the visible orbit guide
+    and the exact route followed by the H.
+-->
+<path
+    id="orbit-route"
+    class="orbit-path"
+    d="
+        M 300 90
+        A 100 210 0 0 1 400 300
+        A 100 210 0 0 1 300 510
+        A 100 210 0 0 1 200 300
+        A 100 210 0 0 1 300 90
+    "
+/>
 
-    It is only a visual guide for now.
-    -->
-    <circle
-    cx="300"
-    cy="300"
-    r="210"
-    class="orbit-path"/>
     <!--
         The Earth.
 
@@ -65,23 +70,32 @@
         EART
 
     </text>
-    <!--
-    The carrier moves the H around the Earth.
 
-    Keeping motion on the group allows the letter itself to receive
-    a separate correction later so it can remain upright.
-    -->
+<!--
+    The carrier follows the shared elliptical route.
+
+    rotate="0" keeps the H upright throughout its journey.
+-->
 <g class="orbit-carrier">
+    <animateMotion
+        dur="20s"
+        repeatCount="indefinite"
+        rotate="0"
+        calcMode="linear"
+        keyPoints="0; 0.25; 0.25; 0.5; 0.75; 0.75; 1"
+        keyTimes="0; 0.20; 0.30; 0.50; 0.70; 0.80; 1">
+        <mpath href="#orbit-route" />
+    </animateMotion>
+
     <text
-        x="300"
-        y="110"
+        x="0"
+        y="15"
         class="orbit-letter">
 
         H
 
+    </text>
 </g>
-
-</text>
 
 </svg>
 

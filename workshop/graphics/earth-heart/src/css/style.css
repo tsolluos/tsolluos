@@ -68,12 +68,10 @@ svg {
 }
 
 /*
-    The orbiting H.
+    The H receives its motion from the SVG carrier.
 
-    It does not move yet.
-
-    Motion will be added only after the
-    static composition has been verified.
+    CSS controls only its visible typography while SVG keeps the
+    letter upright and moves it along the elliptical route.
 */
 .orbit-letter {
 
@@ -87,52 +85,6 @@ svg {
 
     text-anchor: middle;
 
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: keep-letter-upright 16s linear infinite;
-
-}
-
-/*
-    The carrier rotates around the center of the SVG.
-
-    Because the H sits above that center, rotating its parent group
-    carries it around the circular orbit.
-*/
-.orbit-carrier {
-    transform-box: view-box;
-    transform-origin: 300px 300px;
-    animation: orbit-earth 16s linear infinite;
-}
-
-/*
-    One complete rotation returns the carrier to its starting point.
-*/
-@keyframes orbit-earth {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/*
-    The carrier turns clockwise while the H turns equally far
-    counterclockwise.
-
-    The opposite rotations cancel the letter's visible rotation while
-    preserving its movement around the Earth.
-*/
-@keyframes keep-letter-upright {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(-360deg);
-    }
 }
 
 /*
