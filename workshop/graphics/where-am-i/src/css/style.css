@@ -1,0 +1,39 @@
+/*
+    The first view is complete darkness.
+
+    Nothing competes with the visitor's first question.
+*/
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: black;
+}
+
+/*
+    The stage fills the browser and centers its only thought.
+*/
+.where-am-i {
+    display: grid;
+    place-items: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+/*
+    The question is quiet, spacious, and human.
+
+    clamp() keeps it readable across small and large screens.
+*/
+.question {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    font-family: Georgia, serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: normal;
+    letter-spacing: 0.08em;
+}
