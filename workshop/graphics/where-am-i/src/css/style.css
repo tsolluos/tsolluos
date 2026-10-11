@@ -20,6 +20,25 @@ body {
     height: 100vh;
 
     overflow: hidden;
+    position: relative;
+}
+
+/*
+    The real Hubble image fills the stage behind the question.
+
+    object-fit: cover preserves its proportions while allowing the
+    cosmic field to reach every edge of the browser.
+*/
+.universe-image {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    opacity: 0;
+    animation: reveal-universe 10s ease-in-out forwards;
 }
 
 /*
@@ -36,4 +55,45 @@ body {
     font-size: clamp(2rem, 5vw, 4rem);
     font-weight: normal;
     letter-spacing: 0.08em;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95);
+    animation: question-sequence 10s ease-in-out forwards;
+}
+
+/*
+    The question emerges from darkness, remains long enough to be read,
+    then gives way to the visual answer.
+*/
+@keyframes question-sequence {
+    0% {
+        opacity: 0;
+    }
+
+    15%,
+    40% {
+        opacity: 1;
+    }
+
+    65%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/*
+    The universe remains hidden while the question is asked.
+
+    It then emerges gradually as the question disappears.
+*/
+@keyframes reveal-universe {
+    0%,
+    40% {
+        opacity: 0;
+    }
+
+    70%,
+    100% {
+        opacity: 1;
+    }
 }
