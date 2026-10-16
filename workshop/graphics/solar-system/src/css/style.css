@@ -8,6 +8,7 @@ body {
     margin: 0;
     min-height: 100vh;
     background: black;
+    overflow: hidden;
 }
 
 /*
@@ -20,7 +21,10 @@ body {
     width: 100vw;
     height: 100vh;
 
-    overflow: hidden;
+    overflow: visible;
+
+    transform: scale(0.84);
+    transform-origin: center;
 }
 
 /*
@@ -85,6 +89,11 @@ body {
 /*
     Mercury begins at the left edge of its orbit.
 */
+.mercury-orbit {
+    width: 160px;
+    height: 160px;
+}
+
 .mercury {
     width: 8px;
     height: 8px;
@@ -101,8 +110,8 @@ body {
     Venus follows a slightly larger orbit and begins above the Sun.
 */
 .venus-orbit {
-    width: 170px;
-    height: 170px;
+    width: 220px;
+    height: 220px;
 }
 
 .venus {
@@ -125,8 +134,8 @@ body {
     an artificial line across the stage.
 */
 .earth-orbit {
-    width: 215px;
-    height: 215px;
+    width: 280px;
+    height: 280px;
 }
 
 .earth {
@@ -157,8 +166,8 @@ body {
     around the system rather than arranging them in a straight line.
 */
 .mars-orbit {
-    width: 260px;
-    height: 260px;
+    width: 340px;
+    height: 340px;
 }
 
 .mars {
@@ -188,8 +197,8 @@ body {
     difference preserves the important idea that Jupiter is enormous.
 */
 .jupiter-orbit {
-    width: 320px;
-    height: 320px;
+    width: 450px;
+    height: 450px;
 }
 
 .jupiter {
@@ -243,8 +252,8 @@ body {
     illustrative model.
 */
 .saturn-orbit {
-    width: 380px;
-    height: 380px;
+    width: 540px;
+    height: 540px;
 }
 
 .saturn {
@@ -299,8 +308,8 @@ body {
     bands of Jupiter and Saturn.
 */
 .uranus-orbit {
-    width: 440px;
-    height: 440px;
+    width: 620px;
+    height: 620px;
 }
 
 .uranus {
@@ -353,8 +362,8 @@ body {
     Jupiter's starting position in the upper-left.
 */
 .neptune-orbit {
-    width: 500px;
-    height: 500px;
+    width: 710px;
+    height: 710px;
 }
 
 .neptune {
@@ -375,4 +384,98 @@ body {
         );
 
     box-shadow: 0 0 7px rgba(61, 111, 225, 0.62);
+}
+
+/*
+    Each orbit rotates continuously around the Sun.
+
+    The existing centering translation must remain inside the animation
+    because an animated transform replaces the orbit's static transform.
+*/
+.orbit {
+    animation-name: orbit-motion;
+    animation-duration: var(--orbit-duration);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/*
+    One complete rotation returns an orbit and its planet to their
+    original starting positions.
+*/
+@keyframes orbit-motion {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/*
+    The durations are compressed for viewing in a browser.
+
+    They do not reproduce the planets' real orbital periods, but they
+    preserve the truthful relationship that inner planets travel around
+    the Sun faster than outer planets.
+*/
+.mercury-orbit {
+    --orbit-duration: 8s;
+}
+
+.venus-orbit {
+    --orbit-duration: 12s;
+}
+
+.earth-orbit {
+    --orbit-duration: 16s;
+}
+
+.mars-orbit {
+    --orbit-duration: 22s;
+}
+
+.jupiter-orbit {
+    --orbit-duration: 32s;
+}
+
+.saturn-orbit {
+    --orbit-duration: 42s;
+}
+
+.uranus-orbit {
+    --orbit-duration: 54s;
+}
+
+.neptune-orbit {
+    --orbit-duration: 68s;
+}
+
+/*
+    Each planet counter-rotates at the same speed as its orbit.
+
+    The orbit turns clockwise while the planet turns equally far in the
+    opposite direction. This keeps bands, rings, and other visible details
+    upright as the planet travels around the Sun.
+*/
+.planet {
+    animation-name: keep-planet-upright;
+    animation-duration: var(--orbit-duration);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/*
+    The individual rotate property works alongside each planet's existing
+    positioning transform rather than replacing it.
+*/
+@keyframes keep-planet-upright {
+    from {
+        rotate: 0deg;
+    }
+
+    to {
+        rotate: -360deg;
+    }
 }
