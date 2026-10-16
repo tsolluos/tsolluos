@@ -1,0 +1,378 @@
+/*
+    The Solar System begins in darkness.
+
+    Removing the browser's default margin allows the stage to fill
+    the complete window without a white border.
+*/
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: black;
+}
+
+/*
+    The stage fills the browser and provides a shared positioning area
+    for the Sun, planetary orbits, and planets added later.
+*/
+.solar-system {
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+/*
+    This first Sun is deliberately simple and static.
+
+    Its gradient suggests a bright center and warmer outer edge without
+    requiring an image or animation.
+*/
+.sun {
+    position: absolute;
+
+    width: 90px;
+    height: 90px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgb(255, 247, 170) 0%,
+            rgb(255, 196, 45) 55%,
+            rgb(242, 112, 22) 100%
+        );
+
+    box-shadow:
+        0 0 24px rgba(255, 196, 45, 0.95),
+        0 0 70px rgba(242, 112, 22, 0.55);
+}
+/*
+    Every orbit is centered on the Sun.
+
+    The individual orbit classes will control their own dimensions,
+    allowing the planets to occupy progressively larger paths.
+*/
+.orbit {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 50%;
+}
+
+/*
+    Every planet shares the same positioning model and circular shape.
+
+    Its individual class supplies its size, color, and starting location.
+*/
+.planet {
+    position: absolute;
+    border-radius: 50%;
+}
+
+/*
+    Mercury begins at the left edge of its orbit.
+*/
+.mercury {
+    width: 8px;
+    height: 8px;
+
+    left: 0;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: rgb(164, 157, 145);
+}
+
+/*
+    Venus follows a slightly larger orbit and begins above the Sun.
+*/
+.venus-orbit {
+    width: 170px;
+    height: 170px;
+}
+
+.venus {
+    width: 12px;
+    height: 12px;
+
+    left: 50%;
+    top: 0;
+
+    transform: translate(-50%, -50%);
+
+    background: rgb(218, 174, 103);
+    box-shadow: 0 0 5px rgba(218, 174, 103, 0.55);
+}
+
+/*
+    Earth follows the third and wider orbital path.
+
+    It begins on the right side so Mercury, Venus, and Earth do not form
+    an artificial line across the stage.
+*/
+.earth-orbit {
+    width: 215px;
+    height: 215px;
+}
+
+.earth {
+    width: 14px;
+    height: 14px;
+
+    right: 0;
+    top: 50%;
+
+    transform: translate(50%, -50%);
+
+    background:
+        radial-gradient(
+            circle at 35% 40%,
+            rgb(92, 181, 99) 0%,
+            rgb(92, 181, 99) 22%,
+            rgb(48, 123, 190) 26%,
+            rgb(25, 75, 145) 100%
+        );
+
+    box-shadow: 0 0 6px rgba(80, 155, 225, 0.65);
+}
+
+/*
+    Mars completes the four inner rocky planets.
+
+    It begins below the Sun, distributing the initial planet positions
+    around the system rather than arranging them in a straight line.
+*/
+.mars-orbit {
+    width: 260px;
+    height: 260px;
+}
+
+.mars {
+    width: 11px;
+    height: 11px;
+
+    left: 50%;
+    bottom: 0;
+
+    transform: translate(-50%, 50%);
+
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            rgb(224, 129, 81) 0%,
+            rgb(177, 73, 43) 65%,
+            rgb(105, 42, 30) 100%
+        );
+
+    box-shadow: 0 0 5px rgba(195, 80, 45, 0.55);
+}
+
+/*
+    Jupiter receives substantially more visual area than the rocky planets.
+
+    The compressed model cannot reproduce its true scale, but the size
+    difference preserves the important idea that Jupiter is enormous.
+*/
+.jupiter-orbit {
+    width: 320px;
+    height: 320px;
+}
+
+.jupiter {
+    width: 34px;
+    height: 34px;
+
+    left: 14.65%;
+    top: 14.65%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgb(218, 190, 150) 0%,
+            rgb(161, 111, 75) 18%,
+            rgb(235, 213, 178) 31%,
+            rgb(177, 123, 82) 45%,
+            rgb(238, 218, 184) 59%,
+            rgb(145, 94, 68) 73%,
+            rgb(214, 182, 142) 100%
+        );
+
+    box-shadow: 0 0 8px rgba(222, 190, 145, 0.5);
+}
+
+/*
+    A small oval suggests Jupiter's Great Red Spot.
+
+    It is illustrative rather than a scale reproduction.
+*/
+.jupiter::after {
+    content: "";
+
+    position: absolute;
+
+    width: 9px;
+    height: 5px;
+
+    right: 3px;
+    top: 20px;
+
+    border-radius: 50%;
+    background: rgba(174, 67, 48, 0.85);
+}
+
+/*
+    Saturn begins in the upper-right portion of its wider orbit.
+
+    Its planetary body is slightly smaller than Jupiter in this
+    illustrative model.
+*/
+.saturn-orbit {
+    width: 380px;
+    height: 380px;
+}
+
+.saturn {
+    width: 28px;
+    height: 28px;
+
+    left: 85.35%;
+    top: 14.65%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgb(239, 215, 157) 0%,
+            rgb(190, 157, 105) 28%,
+            rgb(244, 221, 166) 48%,
+            rgb(177, 143, 94) 68%,
+            rgb(225, 198, 139) 100%
+        );
+
+    box-shadow: 0 0 7px rgba(225, 198, 139, 0.5);
+}
+
+/*
+    The flattened ellipse suggests Saturn's broad ring system.
+
+    It extends beyond the planetary body and tilts slightly to make its
+    shape readable against the surrounding orbit guide.
+*/
+.saturn::before {
+    content: "";
+
+    position: absolute;
+
+    width: 48px;
+    height: 14px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%) rotate(-18deg);
+
+    border: 3px solid rgba(213, 190, 140, 0.78);
+    border-radius: 50%;
+}
+
+/*
+    Uranus begins in the lower-right portion of its orbit.
+
+    Its cool cyan color distinguishes the first ice giant from the warmer
+    bands of Jupiter and Saturn.
+*/
+.uranus-orbit {
+    width: 440px;
+    height: 440px;
+}
+
+.uranus {
+    width: 20px;
+    height: 20px;
+
+    left: 85.35%;
+    top: 85.35%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            rgb(190, 244, 241) 0%,
+            rgb(103, 205, 210) 58%,
+            rgb(55, 139, 157) 100%
+        );
+
+    box-shadow: 0 0 7px rgba(103, 205, 210, 0.55);
+}
+
+/*
+    Uranus has a real ring system and an extreme axial tilt.
+
+    This narrow, steeply tilted ellipse provides a restrained visual clue
+    without competing with Saturn's much more prominent rings.
+*/
+.uranus::before {
+    content: "";
+
+    position: absolute;
+
+    width: 28px;
+    height: 8px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%) rotate(78deg);
+
+    border: 1px solid rgba(158, 226, 226, 0.62);
+    border-radius: 50%;
+}
+
+/*
+    Neptune completes the eight-planet Solar System.
+
+    It begins in the lower-left portion of the outermost orbit, balancing
+    Jupiter's starting position in the upper-left.
+*/
+.neptune-orbit {
+    width: 500px;
+    height: 500px;
+}
+
+.neptune {
+    width: 19px;
+    height: 19px;
+
+    left: 14.65%;
+    top: 85.35%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            rgb(91, 145, 244) 0%,
+            rgb(39, 82, 190) 58%,
+            rgb(20, 39, 112) 100%
+        );
+
+    box-shadow: 0 0 7px rgba(61, 111, 225, 0.62);
+}
