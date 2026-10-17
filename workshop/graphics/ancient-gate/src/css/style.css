@@ -98,21 +98,93 @@ background:
 .gate-silhouette {
     position: absolute;
 
-    width: 160px;
-    height: 190px;
+    width: 220px;
+    height: 220px;
 
     left: 50%;
     top: 18%;
 
     transform: translateX(-50%);
 
-    border: 16px solid rgba(12, 12, 12, 0.88);
+    border: 20px solid rgba(38, 38, 42, 0.96);
     border-bottom: 0;
-    border-radius: 96px 96px 0 0;
+    border-radius: 130px 130px 0 0;
+    box-shadow:
+        inset 0 0 18px rgba(0, 0, 0, 0.9),
+        0 0 18px rgba(0, 0, 0, 0.75);
     opacity: 0;
     animation: gate-emergence 12s ease-in-out 1s forwards;
     overflow: visible;
     perspective: 600px;
+    z-index: 1;
+}
+
+/*
+    Two stone walls extend outward from the sides of the arched Gate.
+
+    Pseudo-elements keep the walls structurally attached to the Gate,
+    allowing them to share its position, opacity, and emergence animation
+    without adding decorative markup to the HTML.
+*/
+.gate-silhouette::before,
+.gate-silhouette::after {
+    content: "";
+
+    position: absolute;
+
+    width: calc(50vw - 130px);
+    height: 165px;
+
+    bottom: 0;
+
+    z-index: -1;
+
+    background-color: rgba(45, 45, 49, 0.96);
+
+    background-image:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 30px,
+            rgba(10, 10, 12, 0.78) 31px,
+            rgba(10, 10, 12, 0.78) 34px
+        ),
+        repeating-linear-gradient(
+            to right,
+            rgba(95, 95, 101, 0.14) 0,
+            rgba(95, 95, 101, 0.14) 2px,
+            transparent 3px,
+            transparent 58px
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(80, 80, 86, 0.36) 0%,
+            rgba(36, 36, 40, 0.96) 100%
+        );
+
+    border-top: 2px solid rgba(94, 94, 100, 0.34);
+
+    box-shadow:
+        inset 0 0 22px rgba(0, 0, 0, 0.78),
+        0 8px 18px rgba(0, 0, 0, 0.72);
+}
+
+/*
+
+    Each wall begins at one outside edge of the stone arch.
+
+    Their responsive widths fill the remaining viewport space so the Gate
+    appears embedded in one continuous structure at any browser width.
+
+*/
+.gate-silhouette::before {
+    right: calc(100% + 20px);
+    border-right: 1px solid rgba(115, 115, 120, 0.22);
+}
+
+.gate-silhouette::after {
+    left: calc(100% + 20px);
+    border-left: 1px solid rgba(115, 115, 120, 0.22);
 }
 
 /*
@@ -136,7 +208,7 @@ background:
 
     opacity: 0;
     animation: gate-interior-glimmer 3s ease-in-out 15s forwards;
-    border-radius: 80px 80px 0 0;
+    border-radius: 110px 110px 0 0;
 }
 
 @keyframes gate-interior-glimmer {
@@ -172,7 +244,7 @@ background:
     border-right: 1px solid rgba(80, 80, 80, 0.45);
     transform-origin: left center;
     animation: left-door-opening 5s ease-in-out 15s forwards;
-    border-radius: 80px 0 0 0;
+    border-radius: 110px 0 0 0;
 }
 
 .gate-door-right {
@@ -180,7 +252,7 @@ background:
     border-left: 1px solid rgba(80, 80, 80, 0.45);
     transform-origin: right center;
     animation: right-door-opening 5s ease-in-out 15s forwards;
-    border-radius: 0 80px 0 0;
+    border-radius: 0 110px 0 0;
 }
 
 /*
@@ -223,8 +295,8 @@ background:
     color: rgba(150, 150, 150, 0.68);
 
     font-family: Georgia, serif;
-    font-size: 18px;
-    letter-spacing: 2px;
+    font-size: 24px;
+    letter-spacing: 3px;
     line-height: 1;
 
     white-space: nowrap;
@@ -269,11 +341,11 @@ background:
     shapes and widths in the proportional Georgia font.
 */
 .gate-reverse-inscription-left {
-    left: 45px;
+    left: 61px;
 }
 
 .gate-reverse-inscription-right {
-    right: 43px;
+    right: 58px;
 }
 
 /*
