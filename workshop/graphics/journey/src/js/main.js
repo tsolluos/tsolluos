@@ -6,9 +6,9 @@
 */
 const scenes = [
     {
-        src: "../../ancient-gate/src/index.html",
+        src: "../../ancient-gate/src/index.html?v=alien-journey-1",
         title: "Ancient Gate",
-        duration: 26000
+        duration: 34000
     },
     {
         src: "../../where-am-i/src/index.html",

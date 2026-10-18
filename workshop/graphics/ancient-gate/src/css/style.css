@@ -426,168 +426,225 @@ background:
 }
 
 /*
-    The eyes sit above the atmospheric fog layer.
+    The Alien's eyes emerge at the center of the fog.
 
-    left/top place the SVG at the center of the stage, while transform
-    moves it back by half of its own size so it is truly centered.
+    Their restrained scale matches the later hands, feet, and complete
+    character while preserving enough detail to reveal Earth in the pupils.
 */
 .eyes {
     position: absolute;
 
-    width: 300px;
+    width: min(210px, 52vw);
 
     left: 50%;
     top: 50%;
 
     transform: translate(-50%, -50%);
+
+    opacity: 1;
+    z-index: 3;
+
+    pointer-events: none;
+
+    animation: eyes-fade-out 33s ease-in-out forwards;
 }
 
 /*
-    The eyes remain visible while the visitor discovers the feet
-    and hands.
-
-    After the hands have appeared, the entire eye layer fades away.
-    This marks the transition from watching the eyes to seeing through
-    the visitor's own viewpoint.
+    Every eye layer shares the source artwork's three-to-one proportions.
 */
-.eyes {
-    animation: eyes-fade-out 12s ease-in-out forwards;
+.alien-eyes-stage {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 3 / 1;
 }
 
+/*
+    The pupil-free anatomical image remains stationary while the Earth
+    pupils move independently above its glossy eyeballs.
+*/
+.alien-eyes-base,
+.alien-eyes-closed {
+    position: absolute;
+
+    width: 100%;
+    height: auto;
+
+    inset: 0;
+}
+
+.alien-eyes-base {
+    z-index: 1;
+}
 
 /*
-    The eyes stay fully visible through most of the opening sequence.
+    Each pupil contains the same NASA Blue Marble used by Earth Heart.
 
-    After the hands have had time to appear and settle, the eye layer
-    fades to transparent and remains hidden for the rest of this run.
+    border-radius turns the square photograph into a tiny planetary sphere.
+*/
+.alien-pupil {
+    position: absolute;
+
+    width: 9%;
+    aspect-ratio: 1;
+
+    top: 52%;
+
+    border-radius: 50%;
+
+    background-image: url("../images/alien-pupil-earth.jpg");
+    background-position: center;
+    background-size: cover;
+
+    box-shadow:
+        0 0 0 1px rgba(218, 185, 95, 0.72),
+        0 0 5px rgba(120, 181, 112, 0.48);
+
+    opacity: 0;
+    z-index: 2;
+
+    animation: earth-pupil-journey 12s ease-in-out forwards;
+}
+
+.alien-pupil-left {
+    left: 25.5%;
+}
+
+.alien-pupil-right {
+    left: 74.5%;
+}
+
+/*
+    The closed anatomical eyelids briefly cover the base and both pupils.
+
+    This creates one real blink without compressing the surrounding face.
+*/
+.alien-eyes-closed {
+    opacity: 0;
+    z-index: 3;
+
+    animation: alien-eyes-single-blink 12s ease-in-out forwards;
+}
+
+/*
+    The complete eye layer fades as the full Alien resolves.
 */
 @keyframes eyes-fade-out {
     0%,
-    90% {
+    40% {
         opacity: 1;
     }
 
+    44%,
     100% {
         opacity: 0;
     }
 }
 
 /*
-    For now an eye is simply a white ellipse.
-
-    Detail comes later. First we establish the simplest recognizable
-    version of two eyes emerging from darkness.
+    The Alien blinks once before Earth appears inside its pupils.
 */
-.eye {
-    fill: white;
-}
-
-/*
-    Each pupil shares the center point of its eye.
-
-    The dark fill creates the simplest possible eye detail while
-    preserving our small-step approach.
-*/
-.pupil {
-    fill: rgb(35, 35, 35);
-}
-
-/*
-    The first eye behavior is a simple blink.
-
-    transform-origin keeps the closing motion centered on each eye
-    instead of making the eye collapse from one edge.
-
-    transform-box tells the browser to use each SVG shape's own
-    bounding box when calculating that center point.
-*/
-.eye {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: eye-blink 4s ease-in-out infinite;
-}
-
-
-/*
-    Most of the animation leaves the eye completely open.
-
-    For only a brief moment near the end of each cycle, scaleY reduces
-    the eye's vertical size until it is almost closed, then opens it
-    again.
-*/
-@keyframes eye-blink {
+@keyframes alien-eyes-single-blink {
     0%,
-    90%,
+    11% {
+        opacity: 0;
+    }
+
+    13%,
+    16% {
+        opacity: 1;
+    }
+
+    18%,
     100% {
-        transform: scaleY(1);
-    }
-
-    95% {
-        transform: scaleY(0.05);
+        opacity: 0;
     }
 }
 
 /*
-    The pupils can move independently of the white eye shapes.
-
-    This first experiment moves them only horizontally.
-    The original SVG coordinates remain unchanged, giving each pupil
-    a known-good center position.
+    Earth appears after the blink, then looks left, right, and downward
+    toward the body discoveries before returning to center.
 */
-.pupil {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: pupil-look-around 8s ease-in-out infinite;
-}
-
-/*
-    Most of the cycle keeps the pupils centered.
-
-    translateX() moves each pupil horizontally without changing its
-    original SVG coordinates.
-
-    Negative X values move left.
-    Positive X values move right.
-*/
-@keyframes pupil-look-around {
+@keyframes earth-pupil-journey {
     0%,
-    20%,
-    50%,
-    80%,
-    100% {
-        transform: translate(0, 0);
+    17% {
+        opacity: 0;
+        transform: translate(-50%, -50%);
     }
 
-    30%,
-    40% {
-        transform: translate(-18px, 0);
+    20% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
     }
 
-    60%,
-    70% {
-        transform: translate(18px, 0);
+    28%,
+    38% {
+        opacity: 1;
+        transform: translate(calc(-50% - 5px), -50%);
+    }
+
+    48% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    58%,
+    68% {
+        opacity: 1;
+        transform: translate(calc(-50% + 5px), -50%);
+    }
+
+    78% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
     }
 
     85%,
     90% {
-        transform: translate(0, 14px);
+        opacity: 1;
+        transform: translate(-50%, calc(-50% + 4px));
     }
 
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
 }
 
 /*
-    The feet sit near the bottom of the visitor's view.
+    The feet layer shows only the bottom portion of the complete Alien.
 
-    Like the eyes, the SVG is centered horizontally using left: 50%
-    together with translateX(-50%).
+    Its fixed-height window crops away the rest of the character while
+    keeping both feet centered near the bottom of the visitor's view.
 */
 .feet {
     position: absolute;
 
-    width: 300px;
+    width: 330px;
+    height: 108px;
 
     left: 50%;
-    bottom: -20px;
+    bottom: -5px;
+
+    transform: translateX(-50%);
+
+    overflow: hidden;
+}
+
+/*
+    The complete character remains intact inside the cropped feet layer.
+
+    Positioning the image against the bottom exposes its feet while the
+    container hides the legs, body, hands, and head.
+*/
+.alien-feet-image {
+    position: absolute;
+
+    width: 330px;
+    height: auto;
+
+    left: 50%;
+    bottom: 0;
 
     transform: translateX(-50%);
 }
@@ -595,32 +652,213 @@ background:
 /*
     The feet begin hidden.
 
-    Their 25-second journey preserves the original discovery timing,
+    The 33-second discovery preserves the original timing,
     then keeps them visible until they travel through the open Gate.
 */
 .feet {
     opacity: 0;
-    animation: feet-journey 25s ease-in-out forwards;
+    animation: feet-discovery 33s ease-in-out forwards;
 }
 
 /*
-    The feet appear while the pupils look downward and remain in the
-    foreground while the Gate emerges and opens.
-
-    Near the end, they recede upward, shrink with distance, and fade
-    after entering the Gate.
+    The feet appear first, remain long enough to be recognized, then
+    dissolve as the complete Alien takes their place.
 */
-@keyframes feet-journey {
+@keyframes feet-discovery {
     0%,
-    25.6% {
+    30% {
         opacity: 0;
         transform: translateX(-50%);
     }
 
-    27.2%,
-    84% {
+    32%,
+    40% {
         opacity: 1;
         transform: translateX(-50%);
+    }
+
+    44%,
+    100% {
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+}
+
+/*
+    The two hand crops occupy one shared discovery layer.
+
+    Independent positioning makes each hand smaller while preserving
+    generous open space between them for the complete Alien reveal.
+*/
+.hands {
+    position: absolute;
+
+    width: min(380px, 70vw);
+    aspect-ratio: 52 / 25;
+
+    left: 50%;
+    bottom: 10px;
+
+    transform: translateX(-50%);
+
+    opacity: 0;
+    animation: hands-discovery 33s ease-in-out forwards;
+}
+
+/*
+    Each hand uses one independently cropped half of the approved image.
+*/
+.alien-hand-image {
+    position: absolute;
+
+    width: 30%;
+    height: auto;
+
+    top: 0;
+}
+
+.alien-hand-image-left {
+    left: 0;
+}
+
+.alien-hand-image-right {
+    right: 0;
+}
+
+/*
+    The hands appear after the feet and reach toward the visitor.
+
+    They dissolve with the feet when the complete character resolves.
+*/
+@keyframes hands-discovery {
+    0%,
+    34% {
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+
+    36%,
+    40% {
+        opacity: 1;
+        transform: translateX(-50%);
+    }
+
+    44%,
+    100% {
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+}
+
+/*
+    The complete Alien stands in the foreground after its separately
+    discovered hands and feet dissolve.
+
+    Its responsive height preserves the full figure on different screens
+    while keeping the character centered in front of the Gate.
+*/
+.alien-body {
+    position: absolute;
+
+    height: min(54vh, 540px);
+
+    left: 50%;
+    bottom: 0;
+
+    transform: translateX(-50%);
+
+    opacity: 0;
+    z-index: 4;
+
+    pointer-events: none;
+    perspective: 900px;
+
+    animation: alien-journey 33s ease-in-out forwards;
+}
+
+/*
+    The turner holds matching front and rear views of one traveler.
+
+    preserve-3d allows the two image faces to rotate as one object.
+*/
+.alien-turner {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+    animation: alien-turn 33s ease-in-out forwards;
+}
+
+/*
+    Both character images occupy exactly the same stage.
+
+    Hiding each image's reverse side prevents the two poses from showing
+    through one another during the turn.
+*/
+.alien-body-image {
+    position: absolute;
+
+    width: auto;
+    height: 100%;
+
+    left: 50%;
+    top: 0;
+
+    transform: translateX(-50%);
+    backface-visibility: hidden;
+}
+
+/*
+    The departure pose begins facing away from the visitor.
+*/
+.alien-body-back {
+    transform:
+        translateX(-50%)
+        rotateY(180deg);
+}
+
+/*
+    The Alien holds the peaceful greeting before turning toward the Gate.
+
+    The turn happens only after the full character has completely appeared.
+*/
+@keyframes alien-turn {
+    0%,
+    58% {
+        transform: rotateY(0deg);
+    }
+
+    68%,
+    100% {
+        transform: rotateY(180deg);
+    }
+}
+
+/*
+    The complete traveler appears after the separate discoveries resolve.
+
+    After acknowledging the visitor and turning toward the open Gate,
+    the Alien rises, shrinks with distance, and fades beyond the entrance.
+*/
+@keyframes alien-journey {
+    0%,
+    44% {
+        opacity: 0;
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(1);
+    }
+
+    48%,
+    74% {
+        opacity: 1;
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(1);
     }
 
     100% {
@@ -628,112 +866,6 @@ background:
         transform:
             translateX(-50%)
             translateY(-58vh)
-            scale(0.18);
-    }
-}
-/*
-    Green keeps the visible body deliberately generic and illustrative.
-
-    The shared fill is inherited by every sole and toe inside
-    each grouped foot.
-*/
-.foot {
-    fill: green;
-}
-/*
-    Each foot receives a small outward rotation.
-
-    The shared .foot class controls what both feet have in common.
-    The side-specific classes let each foot rotate independently.
-*/
-.foot-left {
-    transform-box: fill-box;
-    transform-origin: center;
-    transform: rotate(-12deg);
-}
-
-.foot-right {
-    transform-box: fill-box;
-    transform-origin: center;
-    transform: rotate(12deg);
-}
-
-/*
-    The hands sit in the lower portion of the visitor's view.
-
-    The SVG spans a wider area than the feet so the hands appear
-    naturally separated on opposite sides of the viewpoint.
-*/
-.hands {
-    position: absolute;
-
-    width: 500px;
-
-    left: 50%;
-    bottom: 80px;
-
-    transform: translateX(-50%);
-}
-
-/*
-    Green keeps the hands consistent with the feet and preserves
-    the simple, generic visual language of the experience.
-*/
-.hand {
-    fill: green;
-}
-
-/*
-    A small outward rotation gives the complete grouped hands
-    distinct left and right orientations.
-*/
-.hand-left {
-    transform-box: fill-box;
-    transform-origin: center;
-    transform: rotate(-20deg);
-}
-
-.hand-right {
-    transform-box: fill-box;
-    transform-origin: center;
-    transform: rotate(20deg);
-}
-
-/*
-    The hands begin hidden.
-
-    Their 25-second journey preserves the original discovery timing,
-    then keeps them visible until they follow the feet through the Gate.
-*/
-.hands {
-    opacity: 0;
-    animation: hands-journey 25s ease-in-out forwards;
-}
-
-/*
-    The hands appear after the eyes discover the feet and return forward.
-
-    Near the end, they follow the feet upward, shrink with distance,
-    and fade after entering the Gate.
-*/
-@keyframes hands-journey {
-    0%,
-    32% {
-        opacity: 0;
-        transform: translateX(-50%);
-    }
-
-    36%,
-    84% {
-        opacity: 1;
-        transform: translateX(-50%);
-    }
-
-    100% {
-        opacity: 0;
-        transform:
-            translateX(-50%)
-            translateY(-48vh)
             scale(0.18);
     }
 }

@@ -10,7 +10,7 @@
         Ancient Gate styles live in their own file so this HTML remains
         responsible for structure rather than appearance.
     -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=alien-journey-1">
 </head>
 
 <body>
@@ -109,229 +109,86 @@
     </div>
 
 <!--
-    The eyes are drawn with SVG because they are visual shapes rather
-    than page structure.
+    The Alien's anatomical eyes emerge first from the darkness.
 
-    This first version is intentionally static. Before teaching the
-    eyes to blink or look around, we prove that their basic shapes,
-    position, and scale work.
+    After one blink, Earth appears inside both pupils as a silent glimpse
+    of the destination carried within the traveler's vision.
 -->
-<svg class="eyes" viewBox="0 0 300 120" aria-hidden="true">
+<div class="eyes" aria-hidden="true">
+    <div class="alien-eyes-stage">
+        <img
+            class="alien-eyes-base"
+            src="images/ancient-gate-alien-eyes-base.png"
+            alt=""
+        >
 
-    <!-- Left eye -->
-    <ellipse
-        cx="90"
-        cy="60"
-        rx="55"
-        ry="30"
-        class="eye"
-    />
+        <span class="alien-pupil alien-pupil-left"></span>
+        <span class="alien-pupil alien-pupil-right"></span>
 
-    <!-- Left pupil -->
-    <circle
-        cx="90"
-        cy="60"
-        r="12"
-        class="pupil"
-    />
-
-    <!-- Right eye -->
-    <ellipse
-        cx="210"
-        cy="60"
-        rx="55"
-        ry="30"
-        class="eye"
-    />
-
-    <!-- Right pupil -->
-    <circle
-        cx="210"
-        cy="60"
-        r="12"
-        class="pupil"
-    />
-
-</svg>
+        <img
+            class="alien-eyes-closed"
+            src="images/ancient-gate-alien-eyes-closed.png"
+            alt=""
+        >
+    </div>
+</div>
 
 <!--
-    The feet occupy a separate visual layer because they are discovered
-    independently during the Ancient Gate opening sequence.
+    The visitor first discovers the feet of the complete Alien traveler.
 
-    Each foot groups a curved sole with five individually sized toe shapes.
-    The result is recognizable rather than anatomically realistic.
+    The image is cropped by its container so only the feet appear during
+    this stage of the discovery sequence.
 -->
-<svg
-    class="feet"
-    viewBox="0 0 300 140"
-    aria-hidden="true"
->
-    <!--
-        The group keeps the sole and toes together as one foot.
-        Rotating the group therefore rotates every included shape.
-    -->
-    <g class="foot foot-left">
-        <!--
-            The sole widens beneath the toes and narrows toward the heel.
-            Curved path segments create an organic outline without realism.
-        -->
-        <path
-            d="
-                M 76 130
-                C 68 119, 66 101, 68 82
-                C 70 62, 73 45, 80 32
-                C 87 22, 101 21, 111 29
-                C 121 38, 124 54, 122 71
-                C 120 89, 116 105, 111 120
-                C 106 134, 86 140, 76 130
-                Z
-            "
-        />
-
-        <!-- Five individually positioned circles suggest separated toes. -->
-        <circle cx="77" cy="33" r="4" />
-        <circle cx="83" cy="24" r="5" />
-        <circle cx="94" cy="21" r="5" />
-        <circle cx="106" cy="22" r="6" />
-        <circle cx="118" cy="31" r="8" />
-    </g>
-
-    <!--
-        The right foot mirrors the left foot.
-        Its largest inner toe faces toward the center of the body.
-    -->
-    <g class="foot foot-right">
-        <!--
-            This path mirrors the refined left sole around the SVG center.
-            Its forefoot widens beneath the toes and narrows at the heel.
-        -->
-        <path
-            d="
-                M 224 130
-                C 232 119, 234 101, 232 82
-                C 230 62, 227 45, 220 32
-                C 213 22, 199 21, 189 29
-                C 179 38, 176 54, 178 71
-                C 180 89, 184 105, 189 120
-                C 194 134, 214 140, 224 130
-                Z
-            "
-        />
-
-        <!-- Five individually positioned circles suggest separated toes. -->
-        <circle cx="182" cy="32" r="8" />
-        <circle cx="194" cy="22" r="6" />
-        <circle cx="206" cy="21" r="5" />
-        <circle cx="217" cy="24" r="5" />
-        <circle cx="223" cy="33" r="4" />
-    </g>
-</svg>
+<div class="feet" aria-hidden="true">
+    <img
+        class="alien-feet-image"
+        src="images/ancient-gate-alien.png"
+        alt=""
+    >
+</div>
 
 <!--
-    The hands occupy a separate visual layer so their discovery can occur
-    independently after the eyes have found the feet.
+    The visitor raises its own hands after discovering its feet.
 
-    Each hand groups a palm, four fingers, and an inward-facing thumb.
-    The shapes remain deliberately simple while establishing viewpoint.
+    This first-person image belongs to the same Alien traveler that will
+    later appear completely and pass through the Ancient Gate.
 -->
-<svg
-    class="hands"
-    viewBox="0 0 500 180"
-    aria-hidden="true"
->
-    <!--
-        The group keeps the palm, four fingers, and thumb together.
-        The existing hand rotation is applied to the complete group.
-    -->
-    <g class="hand hand-left">
-        <!--
-            The smaller palm still supports the fingers and thumb while
-            preserving a narrow wrist at the bottom.
-        -->
-        <path
-            d="
-                M 86 143
-                C 76 135, 72 119, 71 101
-                C 70 83, 72 67, 79 57
-                C 87 49, 113 49, 122 57
-                C 130 67, 133 83, 132 101
-                C 131 119, 126 135, 114 143
-                C 106 149, 94 149, 86 143
-                Z
-            "
-        />
+<div class="hands" aria-hidden="true">
+    <img
+        class="alien-hand-image alien-hand-image-left"
+        src="images/ancient-gate-alien-hand-left.png"
+        alt=""
+    >
 
-        <!-- Four rounded rectangles suggest raised fingers. -->
-        <rect x="73" y="25" width="11" height="55" rx="7" />
-        <rect x="86" y="13" width="11" height="48" rx="7" />
-        <rect x="99" y="8" width="11" height="52" rx="7" />
-        <rect x="112" y="19" width="11" height="50" rx="7" />
+    <img
+        class="alien-hand-image alien-hand-image-right"
+        src="images/ancient-gate-alien-hand-right.png"
+    alt=""
+    >
+</div>
 
-        <!--
-            The thumb grows from the palm's inner edge and tapers outward.
-            A curved path gives it an attached base and rounded tip.
-        -->
-        <path
-            d="
-                M 125 78
-                C 131 70, 139 63, 146 62
-                C 152 61, 156 66, 153 72
-                C 150 79, 143 86, 137 92
-                C 132 97, 126 93, 124 88
-                C 123 84, 123 81, 125 78
-                Z
-            "
-            transform="translate(-3 0)"
-        />
-    </g>
+<!--
+    The complete Alien acknowledges the visitor before turning toward
+    the Ancient Gate.
 
-    <!--
-        The right hand mirrors the left hand.
-        Its thumb faces inward toward the center of the body.
-    -->
-    <g class="hand hand-right">
-        <!--
-            The right palm mirrors the refined left palm around
-            the horizontal center of the hands SVG.
-        -->
-        <path
-            d="
-                M 414 143
-                C 424 135, 428 119, 429 101
-                C 430 83, 428 67, 421 57
-                C 413 49, 387 49, 378 57
-                C 370 67, 367 83, 368 101
-                C 369 119, 374 135, 386 143
-                C 394 149, 406 149, 414 143
-                Z
-            "
-        />
+    Matching front and rear images occupy opposite faces of one rotating
+    stage, creating a continuous turn without changing character scale.
+-->
+<div class="alien-body" aria-hidden="true">
+    <div class="alien-turner">
+        <img
+            class="alien-body-image alien-body-front"
+            src="images/ancient-gate-alien-peace-mudra.png"
+            alt=""
+        >
 
-        <!-- Four rounded rectangles suggest raised fingers. -->
-        <rect x="377" y="19" width="11" height="50" rx="7" />
-        <rect x="390" y="8" width="11" height="52" rx="7" />
-        <rect x="403" y="13" width="11" height="48" rx="7" />
-        <rect x="416" y="25" width="11" height="55" rx="7" />
-
-        <!--
-            The mirrored thumb grows from the palm's inner edge
-            and tapers outward toward the body center.
-        -->
-        <path
-            d="
-                M 375 78
-                C 369 70, 361 63, 354 62
-                C 348 61, 344 66, 347 72
-                C 350 79, 357 86, 363 92
-                C 368 97, 374 93, 376 88
-                C 377 84, 377 81, 375 78
-                Z
-            "
-            transform="translate(3 0)"
-        />
-    </g>
-
-</svg>
+        <img
+            class="alien-body-image alien-body-back"
+            src="images/ancient-gate-alien-departure.png"
+            alt=""
+        >
+    </div>
+</div>
 
 </main>
 
