@@ -21,7 +21,7 @@ const scenes = [
         duration: 20000
     },
     {
-        src: "../../earth-heart/src/index.html",
+        src: "../../earth-heart/src/index.html?v=earth-heart-refinement-1",
         title: "Earth Heart",
         duration: null
     }

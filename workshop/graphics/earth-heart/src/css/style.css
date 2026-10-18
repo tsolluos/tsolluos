@@ -38,19 +38,6 @@ svg {
 }
 
 /*
-    Draw the Earth.
-*/
-.earth {
-
-    fill: rgba(0, 0, 0, 0.28);
-
-    stroke: #6fd88c;
-
-    stroke-width: 4;
-
-}
-
-/*
     The photographic Earth turns slowly beneath the stationary text.
 
     transform-box limits the rotation calculation to the image itself,
@@ -114,20 +101,12 @@ svg {
 }
 
 /*
-    The orbit path.
+    This invisible path remains the exact route followed by the H.
 
-    fill: none keeps the center transparent.
-
-    stroke-dasharray creates the dashed line.
+    Keeping the geometry in the SVG preserves the animation while removing
+    the temporary dashed construction guide from the finished graphic.
 */
 .orbit-path {
-
     fill: none;
-
-    stroke: rgba(255, 255, 255, 0.18);
-
-    stroke-width: 2;
-
-    stroke-dasharray: 8 8;
-
+    stroke: none;
 }

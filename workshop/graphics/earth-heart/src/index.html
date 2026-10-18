@@ -12,7 +12,7 @@
         CSS controls how things look.
         HTML describes what things are.
     -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=earth-heart-refinement-1">
 </head>
 
 <body>
@@ -42,18 +42,17 @@
 </defs>
 
 <!--
-    One shared path serves as both the visible orbit guide
-    and the exact route followed by the H.
+    This invisible elliptical path defines the exact route followed by the H.
 -->
 <path
     id="orbit-route"
     class="orbit-path"
     d="
         M 300 90
-        A 100 210 0 0 1 400 300
-        A 100 210 0 0 1 300 510
-        A 100 210 0 0 1 200 300
-        A 100 210 0 0 1 300 90
+        A 145 210 0 0 1 445 300
+        A 145 210 0 0 1 300 510
+        A 135 210 0 0 1 155 300
+        A 135 210 0 0 1 300 90
     "
 />
 
@@ -77,29 +76,20 @@
 />
 
     <!--
-        The Earth.
+        Four individually positioned letters span the Earth.
 
-        cx = center x
-        cy = center y
-        r  = radius
-    -->
-    <circle
-        cx="300"
-        cy="300"
-        r="140"
-        class="earth"/>
-
-    <!--
-        The letters inside the Earth.
-
-        The H will be added later.
+        Their optical spacing leaves room for the orbiting H to complete
+        HEART on the left and EARTH on the right.
     -->
     <text
         x="300"
         y="315"
         class="earth-text">
 
-        EART
+        <tspan x="212">E</tspan>
+        <tspan x="275">A</tspan>
+        <tspan x="345">R</tspan>
+        <tspan x="399">T</tspan>
 
     </text>
 
@@ -123,6 +113,15 @@
         x="0"
         y="15"
         class="orbit-letter">
+
+        <animate
+            attributeName="y"
+            dur="20s"
+            repeatCount="indefinite"
+            calcMode="linear"
+            values="15; 13; 13; 15; 17; 17; 15"
+            keyTimes="0; 0.20; 0.30; 0.50; 0.70; 0.80; 1"
+        />
 
         H
 
